@@ -10,8 +10,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     private string $fodel = 'admin.products.';
     public function index()
     {
+        return view($this->fodel . __FUNCTION__);
         //
     }
 
@@ -20,6 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        return view($this->fodel . __FUNCTION__);
         //
     }
 
@@ -44,6 +48,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
+        return view($this->fodel . __FUNCTION__);
         //
     }
 
