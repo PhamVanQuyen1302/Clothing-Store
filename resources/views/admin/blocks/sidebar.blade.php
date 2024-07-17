@@ -29,7 +29,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="/admin" class="logo logo-dark">
+        <a href="{{ route('admin.dashboarh') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="/../assets/admin/assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -38,7 +38,7 @@
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="/admin" class="logo logo-light">
+        <a href="{{ route('admin.dashboarh') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="/../assets/admin/assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -60,29 +60,28 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a href="/admin/dashhboard" class="nav-link" data-key="t-analytics">
+                    <a href="{{ route('admin.dashboarh') }}" class="nav-link" data-key="t-analytics">
                         Dashboard </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/categories" class="nav-link" data-key="t-analytics">
+                    <a href="{{ route('admin.categories.index') }}" class="nav-link" data-key="t-analytics">
                         Danh sách Danh Mục </a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="/admin/productSize" class="nav-link" data-key="t-analytics">
-                        Danh sách Kích Cỡ </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/products" class="nav-link" data-key="t-analytics">
+                    <a href="{{ route('admin.products.index') }}" class="nav-link" data-key="t-analytics">
                         Danh sách Sản Phẩm </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/users" class="nav-link" data-key="t-analytics">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link" data-key="t-analytics">
                         Danh sách tài khoản </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/product-properties" class="nav-link" data-key="t-analytics">
-                        Danh sách thuộc tính sản phẩm </a>
+                    <a href="{{ route('admin.images.index') }}" class="nav-link" data-key="t-analytics">
+                        Danh sách hình ảnh </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.roles.index') }}" class="nav-link" data-key="t-analytics">
+                        Danh sách chức vụ </a>
                 </li>
                 <li class="nav-item">
                     <a href="/" class="nav-link" data-key="t-analytics">

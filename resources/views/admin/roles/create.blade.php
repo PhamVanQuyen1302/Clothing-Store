@@ -29,27 +29,19 @@
         <div class="col-10">
             <h2 class="text-center">{{ $title }}</h2>
             <div class="row">
-                <form action="{{ route('admin.categories.store') }}" enctype="multipart/form-data" method="POST" class="row g-3">
+                <form action="{{ route('admin.roles.store') }}" enctype="multipart/form-data" method="POST"
+                    class="row g-3">
                     @csrf
+            
                     <div class="col-md-12">
-                        <label for="fullnameInput" class="form-label">Tên danh mục</label>
-                        <input type="text" class="form-control" id="fullnameInput" name="name"
+                        <label for="fullnameInput" class="form-label">Tên Chức năng</label>
+                        <input type="text" class="form-control" id="file_input" name="name"
                             placeholder="Enter your name">
                     </div>
-                    <div class="col-md-12">
-                        <label for="fullnameInput" class="form-label">Ảnh danh mục</label>
-                        <input type="file" class="form-control" id="file_input"  name="image"
-                            placeholder="Enter your name">
-                    </div>
-                    <img src="" id="img_category" alt="ảnh danh mục" style="display:none; width: 150px;">
-                    <div class="col-md-12">
-                        <label for="fullnameInput" class="form-label">Mô tả danh mục</label>
-                        <input type="text" class="form-control" id="fullnameInput" name="description"
-                            placeholder="Enter your name">
-                    </div>
+                
                     <div class="col-12">
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success">Thêm danh mục</button>
+                            <button type="submit" class="btn btn-success">{{ $title }}</button>
                         </div>
                     </div>
                 </form>
@@ -81,25 +73,5 @@
     <!-- App js -->
     <script src="{{ asset('assets/admin/assets/js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            function showImage(event) {
-                const imgCategory = $('#img_category');
-                const file = event.target.files[0];
-
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        imgCategory.attr('src', e.target.result);
-                        imgCategory.css('display', 'block');
-                    }
-                    reader.readAsDataURL(file);
-                }
-            }
-
-            $('#file_input').change(function(event) {
-                showImage(event);
-            });
-        });
-    </script>
+   
 @endsection

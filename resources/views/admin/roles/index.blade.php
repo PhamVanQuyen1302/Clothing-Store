@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    List-Categories
+    {{ $title }}
 @endsection
 @section('css')
     <!-- App favicon -->
@@ -29,7 +29,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Danh sách danh mục</h4>
+                    <h4 class="card-title mb-0">{{ $title }}</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
@@ -40,7 +40,7 @@
                                     <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
                                         id="create-btn" data-bs-target="#showModal"><i
                                             class="ri-add-line align-bottom me-1"></i> <a
-                                            href="/admin/categories/create">Thêm</a></button>
+                                            href="{{ route('admin.roles.create')}}">Thêm</a></button>
                                     <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
                                             class="ri-delete-bin-2-line"></i></button>
                                 </div>
@@ -66,9 +66,7 @@
                                             </div>
                                         </th>
                                         <th class="sort" data-sort="customer_name">Id</th>
-                                        <th class="sort" data-sort="email">Name</th>
-                                        <th class="sort" data-sort="email">Image</th>
-                                        <th class="sort" data-sort="email">Description</th>
+                                        <th class="sort" data-sort="email">Tên Chức vụ</th>
                                         <th class="sort" data-sort="email">Action</th>
 
                                     </tr>
@@ -80,7 +78,7 @@
                                         </div>
                                     @endif
 
-                                    @foreach ($categories as $item)
+                                    @foreach ($data as $item)
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -90,15 +88,10 @@
                                             </td>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->name }}</td>
+                                            
                                             <td>
-                                                <img src="{{ Storage::url($item->image) }}" width="90px" alt="{{ $item->name }}">
-                                            </td>
-                                            <td class="text-wrap" style="max-width: 200px;">
-                                                {{ \Str::words($item->description, 20, '...') }}
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('admin.categories.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                                                <a href="{{ route('admin.categories.destroy', $item->id) }}"
+                                                <a href="{{ route('admin.roles.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                                                <a href="{{ route('admin.roles.destroy', $item->id) }}"
                                                     onclick="return confirm('Bạn có muốn xóa không?')"
                                                     class="btn btn-danger">Delete</a>
                                             </td>
@@ -117,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- {{ $categories->link() }} --}}
+
                         <div class="d-flex justify-content-end">
                             <div class="pagination-wrap hstack gap-2">
                                 <a class="page-item pagination-prev disabled" href="javascript:void(0);">

@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.ico') }}">
 
     <!-- jsvectormap css -->
-    <link href="{{ asset('assets/admin/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
+        type="text/css" />
 
     <!--Swiper slider css-->
     <link href="{{ asset('assets/admin/assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
@@ -48,20 +49,38 @@
     <script src="{{ asset('assets/admin/assets/js/app.js') }}"></script>
 @endsection
 @section('content')
-    <div class="col-5">
-        <div class="row">
-            <form action="" enctype="multipart/form-data" method="POST" class="row g-3">
-                <div class="col-md-12">
-                    <label for="fullnameInput" class="form-label">Tên danh mục</label>
-                    <input type="text" class="form-control" id="fullnameInput" name="name"
-                        placeholder="Enter your name">
-                </div>
-                <div class="col-12">
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-success">Sửa danh mục</button>
+    <div class="w-100 d-flex justify-content-center align-items-center">
+        <div class="col-10">
+            <h2 class="text-center">{{ $title }}</h2>
+            <div class="row">
+                <form action="{{ route('admin.categories.update', $model->id) }}" enctype="multipart/form-data"
+                    method="POST" class="row g-3">
+                    @csrf
+                    @method('PUT')
+                    <div class="col-md-12">
+                        <label for="fullnameInput" class="form-label">Tên danh mục</label>
+                        <input type="text" class="form-control" id="fullnameInput" value="{{ $model->name }}"
+                            name="name" placeholder="Enter your name">
                     </div>
-                </div>
-            </form>
+                    <div class="col-md-12">
+                        <label for="fullnameInput" class="form-label">Ảnh danh mục</label>
+                        <input type="file" class="form-control" id="" value="{{ $model->image }}"
+                            name="image" placeholder="Enter your name">
+                    </div>
+                    <img src="{{ Storage::url($model->image) }}" id="img_category" alt="ảnh danh mục"
+                        style="width: 150px;">
+                    <div class="col-md-12">
+                        <label for="fullnameInput" class="form-label">Mô tả danh mục</label>
+                        <input type="text" class="form-control" id="fullnameInput" value="{{ $model->description }}"
+                            name="description" placeholder="Enter your name">
+                    </div>
+                    <div class="col-12">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Cập nhập danh mục</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection
@@ -70,7 +89,8 @@
     <link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.ico') }}">
 
     <!-- jsvectormap css -->
-    <link href="{{ asset('assets/admin/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
+        type="text/css" />
 
     <!--Swiper slider css-->
     <link href="{{ asset('assets/admin/assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />

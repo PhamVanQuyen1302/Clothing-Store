@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,10 +13,13 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
 
-     private string $fodel = 'admin.products.';
+     const PATH_VIEW = 'admin.products.';
     public function index()
-    {
-        return view($this->fodel . __FUNCTION__);
+    {   
+        $title = "Danh sách sản phẩm";
+        $data = Product::query()->with('category')->latest('id')->paginate(10);
+
+        return view(self::PATH_VIEW . __FUNCTION__,compact('data','title'));
         //
     }
 
@@ -23,7 +28,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view($this->fodel . __FUNCTION__);
+        $title = "Thêm sản phẩm";
+        $categories = Category::query()->pluck('name','id')->all();
+       
+        return view(self::PATH_VIEW . __FUNCTION__,compact('title','categories'));
         //
     }
 
@@ -32,15 +40,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->isMethod('post')) {
+
+           $data = $request->except('_token');
+        
+            Product::create($data);
+
+            return redirect()->route('admin.products.index')->with('success','Thêm sản phẩm thành công');
+        }
     }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
+    {   
+        $title = "Chi tiết sản phẩm";
+        $model = Product::query()->with('category')->findOrFail($id);
+        return view(self::PATH_VIEW . __FUNCTION__,compact('title','model'));
     }
 
     /**
@@ -48,8 +65,11 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        return view($this->fodel . __FUNCTION__);
-        //
+        $title = "Cập nhập sản phẩm";
+        $categories = Category::query()->pluck('name','id')->all();
+        $model = Product::query()->with('category')->findOrFail($id);
+
+        return view(self::PATH_VIEW . __FUNCTION__,compact('title','categories','model'));
     }
 
     /**
@@ -57,7 +77,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $model = Product::query()->with('category')->findOrFail($id);
+
+        if($request->isMethod('put')) {
+            $data = $request->except('_token');
+        
+            $model->update($data);
+
+            return redirect()->route('admin.products.index')->with('success','Cập nhập sản phẩm thành công');
+        }
     }
 
     /**
@@ -65,6 +93,10 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $model = Product::query()->with('category')->findOrFail($id);
+
+        $model->delete();
+
+        return redirect()->route('admin.products.index')->with('success','Xóa sản phẩm thành công');
     }
 }

@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 @section('title')
-    Add-Categories
+{{ $title }}
 @endsection
 @section('css')
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.ico') }}">
 
     <!-- jsvectormap css -->
-    <link href="{{ asset('assets/admin/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
+        type="text/css" />
 
     <!--Swiper slider css-->
     <link href="{{ asset('assets/admin/assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
@@ -24,51 +25,67 @@
     <link href="{{ asset('assets/admin/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
-<div class="w-100 d-flex justify-content-center align-items-center">
-    <div class="col-10">
-        <h2 class="text-center">Thêm sản phẩm</h2>
-        <div class="row">
-            <form action="" method="POST" enctype="multipart/form-data">
-                <select class="form-select mb-3" name="category_id" aria-label="Default select example">
-                    <option selected>Chọn danh mục cho sản phẩm</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-                    @endforeach
-                </select>
-
-                <div class="mb-3">
-                    <label for="employeeName" class="form-label">Tên sản phẩm</label>
-                    <input type="text" class="form-control" id="employeeName" name="name"
+    <div class="w-100 d-flex justify-content-center align-items-center">
+        <div class="col-10">
+            <h2 class="text-center">{{ $title }}</h2>
+            <div class="row">
+                <form action="{{ route('admin.products.update',$model->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <select class="form-select mb-3" name="category_id" aria-label="Default select example">
+                        <option selected disabled>Chọn danh mục cho sản phẩm</option>
+                        @foreach ($categories as $id => $name)
+                            <option value="{{ $id }}" {{ ($id == $model->category->id ? 'selected' : '')}}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    <select class="form-select mb-3" name="status" aria-label="Default select example">
+                        <option selected disabled>Chọn trạng thái cho sản phẩm</option>
+                        <option value="1" {{ $model->status == 1 ? 'selected' : '' }}>còn Hàng</option>
+                        <option value="0" {{ $model->status == 0 ? 'selected' : '' }}>hết Hàng</option>
+                    </select>
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Tên sản phẩm</label>
+                        <input type="text" class="form-control" id="employeeName" name="name"
+                            value="{{ $model->name }}"    
                         placeholder="Enter emploree name">
-                </div>
-                <div class="mb-3">
-                    <label for="employeeName" class="form-label">Giá sản phẩm</label>
-                    <input type="price" class="form-control" id="employeeName" name="price"
+                    </div>
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Giá sản phẩm</label>
+                        <input type="number" class="form-control" id="employeeName" name="price"
+                            value="{{ $model->price }}"    
                         placeholder="Enter emploree name">
-                </div>
-                <div class="mb-3">
-                    <label for="employeeName" class="form-label">Số lượng sản phẩm</label>
-                    <input type="price" class="form-control" id="employeeName" name="quantity"
+                    </div>
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Giá khuyến mại</label>
+                        <input type="number" class="form-control" id="employeeName" name="promotional_price"
+                            value="{{ $model->promotional_price }}"    
                         placeholder="Enter emploree name">
-                </div>
-                <div class="mb-3">
-                    <label for="employeeName" class="form-label">Ảnh sản phẩm</label>
-                    <input type="file" class="form-control" id="employeeName" name="image"
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Số lượng sản phẩm</label>
+                        <input type="number" class="form-control" id="employeeName" name="quantity"
+                            value="{{ $model->quantity }}"    
                         placeholder="Enter emploree name">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="productDescription" class="form-label">Mô tả sản phẩm</label>
-                    <textarea class="form-control" id="productDescription" name="description" rows="4"
-                        placeholder="Nhập mô tả sản phẩm"></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Ngày Nhập</label>
+                        <input type="date" class="form-control" id="employeeName" name="date"
+                            value="{{ $model->date }}"    
+                        placeholder="Enter emploree name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="productDescription" class="form-label">Mô tả sản phẩm</label>
+                        <textarea class="form-control" id="productDescription" name="description" rows="4"
+                            placeholder="Nhập mô tả sản phẩm">{{ $model->description}}</textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Cập nhập sản phẩm</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('js')

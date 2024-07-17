@@ -2,9 +2,15 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\client\AuthClienController;
+use App\Http\Controllers\client\HomeController;
+use App\Http\Middleware\RoleRedirect;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +24,80 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix'=> 'admin'] ,function() {
-    Route::get('/dashhboard',[DashboardController::class, 'index']);
-    Route::resource('categories',CategoryController::class);
-    Route::resource('users',UserController::class);
-    Route::resource('products',ProductController::class);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/{id}/user-infor', [HomeController::class, 'userInfor'])->name('home.infor');
+Route::get('/{id}/product-detail', [HomeController::class, 'productDetail'])->name('home.detail');
+Route::put('/{id}/update', [HomeController::class, 'update'])->name('home.update');
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::match(['get', 'post'], 'login', [AuthClienController::class, 'login'])->name('auth.login')->middleware('guest');
+    Route::match(['get', 'post'], 'register', [AuthClienController::class, 'register'])->middleware('guest');
+    Route::match(['get', 'post'], 'logout', [AuthClienController::class, 'logout'])->name('auth.logout');
+    Route::get('forgotpassword', [AuthClienController::class, 'forgotpassword'])->middleware('guest');
 });
 
 
+Route::prefix('admin')
+    ->as('admin.')
+    ->middleware('role.redirect')
+    ->group(function () {
 
+        Route::get('/dashboarh', [DashboardController::class, 'index'])->name('dashboarh');
 
+        Route::prefix('categories')
+            ->as('categories.')
+            ->group(function () {
+                Route::get('/',                 [CategoryController::class, 'index'])->name('index');
+                Route::get('create',            [CategoryController::class, 'create'])->name('create');
+                Route::post('store',            [CategoryController::class, 'store'])->name('store');
+                Route::get('show/{id}',         [CategoryController::class, 'show'])->name('show');
+                Route::get('{id}/edit',         [CategoryController::class, 'edit'])->name('edit');
+                Route::put('{id}/update',       [CategoryController::class, 'update'])->name('update');
+                Route::get('{id}/destroy',   [CategoryController::class, 'destroy'])->name('destroy');
+            });
+
+        Route::prefix('users')
+            ->as('users.')
+            ->group(function () {
+                Route::get('/',                 [UserController::class, 'index'])->name('index');
+                Route::get('create',            [UserController::class, 'create'])->name('create');
+                Route::post('store',            [UserController::class, 'store'])->name('store');
+                Route::get('show/{id}',         [UserController::class, 'show'])->name('show');
+                Route::get('{id}/edit',         [UserController::class, 'edit'])->name('edit');
+                Route::put('{id}/update',       [UserController::class, 'update'])->name('update');
+                Route::get('{id}/destroy',   [UserController::class, 'destroy'])->name('destroy');
+            });
+
+        Route::prefix('products')
+            ->as('products.')
+            ->group(function () {
+                Route::get('/',                 [ProductController::class, 'index'])->name('index');
+                Route::get('create',            [ProductController::class, 'create'])->name('create');
+                Route::post('store',            [ProductController::class, 'store'])->name('store');
+                Route::get('show/{id}',         [ProductController::class, 'show'])->name('show');
+                Route::get('{id}/edit',         [ProductController::class, 'edit'])->name('edit');
+                Route::put('{id}/update',       [ProductController::class, 'update'])->name('update');
+                Route::get('{id}/destroy',   [ProductController::class, 'destroy'])->name('destroy');
+            });
+
+        Route::prefix('images')
+            ->as('images.')
+            ->group(function () {
+                Route::get('/',                 [ImageController::class, 'index'])->name('index');
+                Route::get('create',            [ImageController::class, 'create'])->name('create');
+                Route::post('store',            [ImageController::class, 'store'])->name('store');
+                Route::get('{id}/edit',         [ImageController::class, 'edit'])->name('edit');
+                Route::put('{id}/update',       [ImageController::class, 'update'])->name('update');
+                Route::get('{id}/destroy',   [ImageController::class, 'destroy'])->name('destroy');
+            });
+        Route::prefix('roles')
+            ->as('roles.')
+            ->group(function () {
+                Route::get('/',                 [RoleController::class, 'index'])->name('index');
+                Route::get('create',            [RoleController::class, 'create'])->name('create');
+                Route::post('store',            [RoleController::class, 'store'])->name('store');
+                Route::get('{id}/edit',         [RoleController::class, 'edit'])->name('edit');
+                Route::put('{id}/update',       [RoleController::class, 'update'])->name('update');
+                Route::get('{id}/destroy',   [RoleController::class, 'destroy'])->name('destroy');
+            });
+    });

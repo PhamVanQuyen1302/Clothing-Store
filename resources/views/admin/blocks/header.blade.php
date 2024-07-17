@@ -8,8 +8,7 @@
                         <img src="/../assets/admin/assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="/../assets/admin/assets/images/logo-dark.png" alt=""
-                            height="17">
+                        <img src="/../assets/admin/assets/images/logo-dark.png" alt="" height="17">
                     </span>
                 </a>
 
@@ -18,14 +17,12 @@
                         <img src="/../assets/admin/assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="/../assets/admin/assets/images/logo-light.png" alt=""
-                            height="17">
+                        <img src="/../assets/admin/assets/images/logo-light.png" alt="" height="17">
                     </span>
                 </a>
             </div>
 
-            <button type="button"
-                class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
+            <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
                 id="topnav-hamburger-icon">
                 <span class="hamburger-icon">
                     <span></span>
@@ -161,64 +158,63 @@
                 <div class="dropdown-menu dropdown-menu-end">
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language py-2"
-                        data-lang="en" title="English">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="en"
+                        title="English">
                         <img src="../../assets/admin/assets/images/flags/us.svg" alt="user-image"
                             class="me-2 rounded" height="18">
                         <span class="align-middle">English</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                        data-lang="sp" title="Spanish">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp"
+                        title="Spanish">
                         <img src="../../assets/admin/assets/images/flags/spain.svg" alt="user-image"
                             class="me-2 rounded" height="18">
                         <span class="align-middle">Española</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                        data-lang="gr" title="German">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr"
+                        title="German">
                         <img src="../../assets/admin/assets/images/flags/germany.svg" alt="user-image"
-                            class="me-2 rounded" height="18"> <span
-                            class="align-middle">Deutsche</span>
+                            class="me-2 rounded" height="18"> <span class="align-middle">Deutsche</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                        data-lang="it" title="Italian">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it"
+                        title="Italian">
                         <img src="../../assets/admin/assets/images/flags/italy.svg" alt="user-image"
                             class="me-2 rounded" height="18">
                         <span class="align-middle">Italiana</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                        data-lang="ru" title="Russian">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru"
+                        title="Russian">
                         <img src="../../assets/admin/assets/images/flags/russia.svg" alt="user-image"
                             class="me-2 rounded" height="18">
                         <span class="align-middle">русский</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                        data-lang="ch" title="Chinese">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ch"
+                        title="Chinese">
                         <img src="../../assets/admin/assets/images/flags/china.svg" alt="user-image"
                             class="me-2 rounded" height="18">
                         <span class="align-middle">中国人</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                        data-lang="fr" title="French">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="fr"
+                        title="French">
                         <img src="../../assets/admin/assets/images/flags/french.svg" alt="user-image"
                             class="me-2 rounded" height="18">
                         <span class="align-middle">français</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                        data-lang="ar" title="Arabic">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ar"
+                        title="Arabic">
                         <img src="../../assets/admin/assets/images/flags/ae.svg" alt="user-image"
                             class="me-2 rounded" height="18">
                         <span class="align-middle">Arabic</span>
@@ -248,22 +244,19 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#!">
-                                    <img src="/../assets/admin/assets/images/brands/github.png"
-                                        alt="Github">
+                                    <img src="/../assets/admin/assets/images/brands/github.png" alt="Github">
                                     <span>GitHub</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#!">
-                                    <img src="/../assets/admin/assets/images/brands/bitbucket.png"
-                                        alt="bitbucket">
+                                    <img src="/../assets/admin/assets/images/brands/bitbucket.png" alt="bitbucket">
                                     <span>Bitbucket</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#!">
-                                    <img src="/../assets/admin/assets/images/brands/dribbble.png"
-                                        alt="dribbble">
+                                    <img src="/../assets/admin/assets/images/brands/dribbble.png" alt="dribbble">
                                     <span>Dribbble</span>
                                 </a>
                             </div>
@@ -272,22 +265,19 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#!">
-                                    <img src="/../assets/admin/assets/images/brands/dropbox.png"
-                                        alt="dropbox">
+                                    <img src="/../assets/admin/assets/images/brands/dropbox.png" alt="dropbox">
                                     <span>Dropbox</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#!">
-                                    <img src="/../assets/admin/assets/images/brands/mail_chimp.png"
-                                        alt="mail_chimp">
+                                    <img src="/../assets/admin/assets/images/brands/mail_chimp.png" alt="mail_chimp">
                                     <span>Mail Chimp</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#!">
-                                    <img src="/../assets/admin/assets/images/brands/slack.png"
-                                        alt="slack">
+                                    <img src="/../assets/admin/assets/images/brands/slack.png" alt="slack">
                                     <span>Slack</span>
                                 </a>
                             </div>
@@ -322,14 +312,12 @@
                         <div class="p-2">
                             <div class="text-center empty-cart" id="empty-cart">
                                 <div class="avatar-md mx-auto my-3">
-                                    <div
-                                        class="avatar-title bg-info-subtle text-info fs-36 rounded-circle">
+                                    <div class="avatar-title bg-info-subtle text-info fs-36 rounded-circle">
                                         <i class='bx bx-cart'></i>
                                     </div>
                                 </div>
                                 <h5 class="mb-3">Your Cart is Empty!</h5>
-                                <a href="apps-ecommerce-products.html"
-                                    class="btn btn-success w-md mb-3">Shop Now</a>
+                                <a href="apps-ecommerce-products.html" class="btn btn-success w-md mb-3">Shop Now</a>
                             </div>
                             <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
                                 <div class="d-flex align-items-center">
@@ -337,8 +325,7 @@
                                         class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                     <div class="flex-grow-1">
                                         <h6 class="mt-0 mb-1 fs-14">
-                                            <a href="apps-ecommerce-product-details.html"
-                                                class="text-reset">Branded
+                                            <a href="apps-ecommerce-product-details.html" class="text-reset">Branded
                                                 T-Shirts</a>
                                         </h6>
                                         <p class="mb-0 fs-12 text-muted">
@@ -346,8 +333,7 @@
                                         </p>
                                     </div>
                                     <div class="px-2">
-                                        <h5 class="m-0 fw-normal">$<span
-                                                class="cart-item-price">320</span></h5>
+                                        <h5 class="m-0 fw-normal">$<span class="cart-item-price">320</span></h5>
                                     </div>
                                     <div class="ps-2">
                                         <button type="button"
@@ -363,8 +349,8 @@
                                         class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                     <div class="flex-grow-1">
                                         <h6 class="mt-0 mb-1 fs-14">
-                                            <a href="apps-ecommerce-product-details.html"
-                                                class="text-reset">Bentwood Chair</a>
+                                            <a href="apps-ecommerce-product-details.html" class="text-reset">Bentwood
+                                                Chair</a>
                                         </h6>
                                         <p class="mb-0 fs-12 text-muted">
                                             Quantity: <span>5 x $18</span>
@@ -388,8 +374,7 @@
                                         class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                     <div class="flex-grow-1">
                                         <h6 class="mt-0 mb-1 fs-14">
-                                            <a href="apps-ecommerce-product-details.html"
-                                                class="text-reset">
+                                            <a href="apps-ecommerce-product-details.html" class="text-reset">
                                                 Borosil Paper Cup</a>
                                         </h6>
                                         <p class="mb-0 fs-12 text-muted">
@@ -397,8 +382,7 @@
                                         </p>
                                     </div>
                                     <div class="px-2">
-                                        <h5 class="m-0 fw-normal">$<span
-                                                class="cart-item-price">750</span></h5>
+                                        <h5 class="m-0 fw-normal">$<span class="cart-item-price">750</span></h5>
                                     </div>
                                     <div class="ps-2">
                                         <button type="button"
@@ -414,8 +398,7 @@
                                         class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                     <div class="flex-grow-1">
                                         <h6 class="mt-0 mb-1 fs-14">
-                                            <a href="apps-ecommerce-product-details.html"
-                                                class="text-reset">Gray
+                                            <a href="apps-ecommerce-product-details.html" class="text-reset">Gray
                                                 Styled T-Shirt</a>
                                         </h6>
                                         <p class="mb-0 fs-12 text-muted">
@@ -423,8 +406,7 @@
                                         </p>
                                     </div>
                                     <div class="px-2">
-                                        <h5 class="m-0 fw-normal">$ <span
-                                                class="cart-item-price">1250</span></h5>
+                                        <h5 class="m-0 fw-normal">$ <span class="cart-item-price">1250</span></h5>
                                     </div>
                                     <div class="ps-2">
                                         <button type="button"
@@ -440,16 +422,15 @@
                                         class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                     <div class="flex-grow-1">
                                         <h6 class="mt-0 mb-1 fs-14">
-                                            <a href="apps-ecommerce-product-details.html"
-                                                class="text-reset">Stillbird Helmet</a>
+                                            <a href="apps-ecommerce-product-details.html" class="text-reset">Stillbird
+                                                Helmet</a>
                                         </h6>
                                         <p class="mb-0 fs-12 text-muted">
                                             Quantity: <span>2 x $495</span>
                                         </p>
                                     </div>
                                     <div class="px-2">
-                                        <h5 class="m-0 fw-normal">$<span
-                                                class="cart-item-price">990</span></h5>
+                                        <h5 class="m-0 fw-normal">$<span class="cart-item-price">990</span></h5>
                                     </div>
                                     <div class="ps-2">
                                         <button type="button"
@@ -492,8 +473,8 @@
 
             <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                 <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
-                    id="page-header-notifications-dropdown" data-bs-toggle="dropdown"
-                    data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                    id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class='bx bx-bell fs-22'></i>
                     <span
                         class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">3<span
@@ -515,8 +496,8 @@
                         </div>
 
                         <div class="px-2 pt-2">
-                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom"
-                                data-dropdown-tabs="true" id="notificationItemsTab" role="tablist">
+                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom" data-dropdown-tabs="true"
+                                id="notificationItemsTab" role="tablist">
                                 <li class="nav-item waves-effect waves-light">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#all-noti-tab"
                                         role="tab" aria-selected="true">
@@ -524,14 +505,14 @@
                                     </a>
                                 </li>
                                 <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#messages-tab"
-                                        role="tab" aria-selected="false">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#messages-tab" role="tab"
+                                        aria-selected="false">
                                         Messages
                                     </a>
                                 </li>
                                 <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab"
-                                        role="tab" aria-selected="false">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab" role="tab"
+                                        aria-selected="false">
                                         Alerts
                                     </a>
                                 </li>
@@ -541,15 +522,12 @@
                     </div>
 
                     <div class="tab-content position-relative" id="notificationItemsTabContent">
-                        <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab"
-                            role="tabpanel">
+                        <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab" role="tabpanel">
                             <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                <div
-                                    class="text-reset notification-item d-block dropdown-item position-relative">
+                                <div class="text-reset notification-item d-block dropdown-item position-relative">
                                     <div class="d-flex">
                                         <div class="avatar-xs me-3 flex-shrink-0">
-                                            <span
-                                                class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
+                                            <span class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
                                                 <i class="bx bx-badge-check"></i>
                                             </span>
                                         </div>
@@ -569,8 +547,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="all-notification-check01">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="all-notification-check01">
                                                 <label class="form-check-label"
                                                     for="all-notification-check01"></label>
                                             </div>
@@ -578,12 +556,10 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="text-reset notification-item d-block dropdown-item position-relative">
+                                <div class="text-reset notification-item d-block dropdown-item position-relative">
                                     <div class="d-flex">
                                         <img src="/../assets/admin/assets/images/users/avatar-2.jpg"
-                                            class="me-3 rounded-circle avatar-xs flex-shrink-0"
-                                            alt="user-pic">
+                                            class="me-3 rounded-circle avatar-xs flex-shrink-0" alt="user-pic">
                                         <div class="flex-grow-1">
                                             <a href="#!" class="stretched-link">
                                                 <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier</h6>
@@ -600,8 +576,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="all-notification-check02">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="all-notification-check02">
                                                 <label class="form-check-label"
                                                     for="all-notification-check02"></label>
                                             </div>
@@ -609,8 +585,7 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="text-reset notification-item d-block dropdown-item position-relative">
+                                <div class="text-reset notification-item d-block dropdown-item position-relative">
                                     <div class="d-flex">
                                         <div class="avatar-xs me-3 flex-shrink-0">
                                             <span
@@ -632,8 +607,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="all-notification-check03">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="all-notification-check03">
                                                 <label class="form-check-label"
                                                     for="all-notification-check03"></label>
                                             </div>
@@ -641,12 +616,10 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="text-reset notification-item d-block dropdown-item position-relative">
+                                <div class="text-reset notification-item d-block dropdown-item position-relative">
                                     <div class="d-flex">
                                         <img src="/../assets/admin/assets/images/users/avatar-8.jpg"
-                                            class="me-3 rounded-circle avatar-xs flex-shrink-0"
-                                            alt="user-pic">
+                                            class="me-3 rounded-circle avatar-xs flex-shrink-0" alt="user-pic">
                                         <div class="flex-grow-1">
                                             <a href="#!" class="stretched-link">
                                                 <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson</h6>
@@ -662,8 +635,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="all-notification-check04">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="all-notification-check04">
                                                 <label class="form-check-label"
                                                     for="all-notification-check04"></label>
                                             </div>
@@ -672,10 +645,8 @@
                                 </div>
 
                                 <div class="my-3 text-center view-all">
-                                    <button type="button"
-                                        class="btn btn-soft-success waves-effect waves-light">View
-                                        All Notifications <i
-                                            class="ri-arrow-right-line align-middle"></i></button>
+                                    <button type="button" class="btn btn-soft-success waves-effect waves-light">View
+                                        All Notifications <i class="ri-arrow-right-line align-middle"></i></button>
                                 </div>
                             </div>
 
@@ -703,8 +674,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="messages-notification-check01">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="messages-notification-check01">
                                                 <label class="form-check-label"
                                                     for="messages-notification-check01"></label>
                                             </div>
@@ -732,8 +703,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="messages-notification-check02">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="messages-notification-check02">
                                                 <label class="form-check-label"
                                                     for="messages-notification-check02"></label>
                                             </div>
@@ -761,8 +732,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="messages-notification-check03">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="messages-notification-check03">
                                                 <label class="form-check-label"
                                                     for="messages-notification-check03"></label>
                                             </div>
@@ -789,8 +760,8 @@
                                         </div>
                                         <div class="px-2 fs-15">
                                             <div class="form-check notification-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="" id="messages-notification-check04">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="messages-notification-check04">
                                                 <label class="form-check-label"
                                                     for="messages-notification-check04"></label>
                                             </div>
@@ -799,22 +770,19 @@
                                 </div>
 
                                 <div class="my-3 text-center view-all">
-                                    <button type="button"
-                                        class="btn btn-soft-success waves-effect waves-light">View
-                                        All Messages <i
-                                            class="ri-arrow-right-line align-middle"></i></button>
+                                    <button type="button" class="btn btn-soft-success waves-effect waves-light">View
+                                        All Messages <i class="ri-arrow-right-line align-middle"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade p-4" id="alerts-tab" role="tabpanel"
-                            aria-labelledby="alerts-tab"></div>
+                        <div class="tab-pane fade p-4" id="alerts-tab" role="tabpanel" aria-labelledby="alerts-tab">
+                        </div>
 
                         <div class="notification-actions" id="notification-actions">
                             <div class="d-flex text-muted justify-content-center">
                                 Select <div id="select-content" class="text-body fw-semibold px-1">0</div>
                                 Result <button type="button" class="btn btn-link link-danger p-0 ms-3"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#removeNotificationModal">Remove</button>
+                                    data-bs-toggle="modal" data-bs-target="#removeNotificationModal">Remove</button>
                             </div>
                         </div>
                     </div>
@@ -822,49 +790,32 @@
             </div>
 
             <div class="dropdown ms-sm-3 header-item topbar-user">
-            
-                <button type="button" class="btn" id="page-header-user-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center">
-                        <img class="rounded-circle header-profile-user" src="../../public/admin/assets/images/profile-bg.jpg"
-                            alt="Header Avatar">
-                        <span class="text-start ms-xl-2">
-                            <span
-                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">dsadsadsa</span>
-                            <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">admin</span>
+
+                
+                @if (session('id'))
+                    <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+                            <img class="rounded-circle header-profile-user"
+                                src="{{ Storage::url(session('avatar')) }}" alt="Header Avatar">
+                            <span class="text-start ms-xl-2">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ session('name') }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ session('role_id') == 2 ? 'Admin':'' }}</span>
+                            </span>
                         </span>
-                    </span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                    <h6 class="dropdown-header">Welcome Anna!</h6>
-                    <a class="dropdown-item" href="pages-profile.html"><i
-                            class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Profile</span></a>
-                    <a class="dropdown-item" href="apps-chat.html"><i
-                            class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i>
-                        <span class="align-middle">Messages</span></a>
-                    <a class="dropdown-item" href="apps-tasks-kanban.html"><i
-                            class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i>
-                        <span class="align-middle">Taskboard</span></a>
-                    <a class="dropdown-item" href="pages-faqs.html"><i
-                            class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Help</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="pages-profile.html"><i
-                            class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Balance : <b>$5971.67</b></span></a>
-                    <a class="dropdown-item" href="pages-profile-settings.html"><span
-                            class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
-                            class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Settings</span></a>
-                    <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
-                            class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Lock screen</span></a>
-                    <a class="dropdown-item" href="/auth/logout"><i
-                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle" data-key="t-logout">Logout</span></a>
-                </div>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <h6 class="dropdown-header">Welcome Anna!</h6>
+                        <a class="dropdown-item" href="pages-profile.html"><i
+                                class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                                class="align-middle">Profile</span></a>
+
+                        <a class="dropdown-item" href="{{ route('auth.logout') }}"><i
+                                class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                class="align-middle" data-key="t-logout">Logout</span></a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

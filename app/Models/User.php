@@ -1,44 +1,63 @@
-<?php
+<?php  
 
-namespace App\Models;
+namespace App\Models;  
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Factories\HasFactory;  
+use Illuminate\Foundation\Auth\User as Authenticatable; // Đúng cách  
+use Illuminate\Notifications\Notifiable;  
 
-class User extends Authenticatable
-{
-    use HasApiTokens, HasFactory, Notifiable;
+class User extends Authenticatable // Kế thừa Authenticatable thay vì Model  
+{  
+    use HasFactory, Notifiable;  
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    /**  
+     * Specify the table associated with the model.  
+     *   
+     * @var string  
+     */  
+    protected $table = 'users';  
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    /**  
+     * The attributes that are mass assignable.  
+     *   
+     * @var array  
+     */  
+    protected $fillable = [  
+        'name',   
+        'email',   
+        'password',   
+        'tel',   
+        'age',   
+        'avatar',   
+        'address',      
+        'gender',   
+        'status',
+        'role_id' 
+    ];  
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    /**  
+     * The attributes that should be hidden for arrays.  
+     *  
+     * @var array  
+     */  
+    protected $hidden = [  
+        'password',   
+        'remember_token',  
+    ];  
+
+    /**  
+     * The attributes that should be cast to native types.  
+     *  
+     * @var array  
+     */  
+    protected $casts = [  
+        'email_verified_at' => 'datetime',  
+    ];  
+
+    /**  
+     * Get the role associated with the user.  
+     */  
+    public function role() {  
+        return $this->belongsTo(Roles::class);  
+    }  
 }
