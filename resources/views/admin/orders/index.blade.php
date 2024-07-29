@@ -56,6 +56,10 @@
                         </div>
 
                         <div class="table-responsive table-card mt-3 mb-1">
+
+                            <div class="alert alert-danger" id="error-message" style="display: none">   
+
+                            </div>
                             <table class="table align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     <tr>
@@ -66,23 +70,20 @@
                                             </div>
                                         </th>
                                         <th class="sort" data-sort="customer_name">Id</th>
-                                        <th class="sort" data-sort="email">Name</th>
-                                        <th class="sort" data-sort="email">Price</th>
-                                        <th class="sort" data-sort="email">Promotional_price</th>
-                                        <th class="sort" data-sort="email">Quantity</th>
-                                        <th class="sort" data-sort="email">Category</th>
-                                        <th class="sort" data-sort="email">Status</th>
+                                        <th class="sort" data-sort="email">Mã đơn hàng</th>
+
+
+                                        <th class="sort" data-sort="email">Ngày đặt</th>
+                                        <th class="sort" data-sort="email">Tổng tiền</th>
+                                        <th class="sort" data-sort="email">Ghi chú</th>
+                                        <th class="sort" data-sort="email">Phương thức thanh toán</th>
+                                        <th class="sort" data-sort="email">Trạng thái đơn hàng</th>
                                         <th class="sort" data-sort="email">Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody class="list form-check-all">
-                                    @if (session('success'))
-                                        <div class="alert alert-success">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
-                                    
+                                    {{-- @dd($data) --}}
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>
@@ -92,20 +93,27 @@
                                                 </div>
                                             </td>
                                             <td>{{ $item->id }}</td>
-                                            <td class="text-wrap" style="max-width: 200px;">{{ $item->name }}</td>
-                                            <td>{{ number_format($item->price) }} đ</td>
-                                            <td>{{ number_format($item->promotional_price) }} đ</td>
-                                            <td>{{ $item->quantity }} </td>
-                                            <td>{{ $item->category->name }}</td>
-                                            <td>{!! $item->status == 1 ? '<span class="bg-success">Còn hàng</span>' : '<span class="bg-danger">Hết hàng</span>' !!}</td>
+                                            <td>{{ $item->code_order }}</td>
+
+                                            <td>{{ $item->booking_date }}</td>
+                                            <td>{{ number_format($item->totak) }} đ</td>
+                                            <td>{{ $item->note }}</td>
+                                            <td>{{ $item->payment->name }}</td>
                                             <td>
-                                                <a href="{{ route('admin.products.show', $item->id) }}"
+                                                <select name="" class="status-select" class="form-select mb-3"
+                                                    id="" data-detail-id="{{ $item->id }}">
+                                                    @foreach ($order_status as $status)
+                                                        <option value="{{ $status->id }}"
+                                                            {{ $status->id === $item->order_status_id ? 'selected' : '' }}>
+                                                            {{ $status->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ route('admin.orders.show', $item->id) }}"
                                                     class="btn btn-info">Xem chi tiết</a>
-                                                <a href="{{ route('admin.products.edit', $item->id) }}"
-                                                    class="btn btn-warning">Sửa</a>
-                                                <a href="{{ route('admin.products.destroy', $item->id) }}"
-                                                    onclick="return confirm('Bạn có muốn xóa không?')"
-                                                    class="btn btn-danger">Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -165,4 +173,43 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/admin/assets/js/app.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(".status-select").on("change", function() {
+                var detailId = $(this).data("detail-id");
+                var newStatus = $(this).val();
+
+                // Gửi yêu cầu AJAX để cập nhật trạng thái  
+                $.ajax({
+                    url: "/admin/orders/update",
+                    method: "POST",
+                    data: {
+                        id: detailId,
+                        new_status: newStatus
+                    },
+                    success: function(response) {
+                        // Thông báo cho người dùng thành công  
+                        alert("Cập nhật trạng thái thành công!");
+                        console.log(response);
+                    },
+                    error: function(xhr) {
+                        // Xử lý lỗi (nếu có)  
+                        var errorMessage = xhr.responseJSON ? xhr.responseJSON.message :
+                            "Đã xảy ra lỗi!";
+
+                        // Hiển thị thông báo lỗi trên giao diện HTML  
+                        $("#error-message").text(errorMessage).show();
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

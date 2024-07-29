@@ -109,36 +109,38 @@
                         <div id="tab-content-1" class="tab-content-item" style="display: block">
                             <div class="list-sps">
                                 <div class="row">
-                                    {{-- @dd($data->image->product->id) --}}
                                     @foreach ($data as $item)
-
-                                    
                                         <div class="box-product box_tab_index prdWrapper pro-loop prd37833639"
                                             data-pid="37833639">
                                             <div class="item col-lg-3 col-md-4 col-xs-6 col-sm-6">
                                                 <div class="inner-item sold-out product-item" data-id="37833639"
                                                     data-img="">
                                                     <div class="p-image">
-                                                        <a class="a-image"
-                                                            href="{{ route('home.detail',$item->product->id) }}">
-                                                            <img data-sizes="auto"
-                                                                src="{{ Storage::url($item->link_image) }}"
-                                                                data-src="{{ Storage::url($item->link_image) }}"
-                                                                class="attachment-medium size-medium wp-post-image lazyload productHover productHover37833639"
-                                                                alt="{{ $item->product->name }}" />
+                                                        <a class="a-image" href="{{ route('home.detail', $item->id) }}">
+                                                            @foreach ($item->image as $image)
+                                                                <img data-sizes="auto"
+                                                                    src="{{ Storage::url($image->link_image) }}"
+                                                                    data-src="{{ Storage::url($image->link_image) }}"
+                                                                    class="attachment-medium size-medium wp-post-image lazyload productHover productHover37833639"
+                                                                    alt="{{ $item->name }}" />
+                                                            @endforeach
                                                         </a>
                                                         <div class="btn-quickview tp_button" data-psId="37833639"><i
-                                                                class="fal fa-eye"></i><a href="{{ route('home.detail',$item->product->id) }}"><span> Xem nhanh</span></a></div>
+                                                                class="fal fa-eye"></i><a
+                                                                href="{{ route('home.detail', $item->id) }}"><span> Xem
+                                                                    nhanh</span></a></div>
                                                     </div>
                                                     <div class="box-text">
                                                         <p class="title"><a class="tp_product_name"
-                                                                href="{{ route('home.detail',$item->product->id) }}"
-                                                                title="{{ $item->product->name }}">{{ $item->product->name }}</a>
+                                                                href="{{ route('home.detail', $item->id) }}"
+                                                                title="{{ $item->name }}">{{ $item->name }}</a>
                                                         </p>
 
                                                         <p class="price">
                                                             <strong class="f-left">
-                                                                <span class="tp_product_price">{{ number_format($item->product->price) }} đ</span>
+                                                                <span
+                                                                    class="tp_product_price">{{ number_format($item->price) }}
+                                                                    đ</span>
                                                             </strong>
                                                         </p>
                                                         <p class="discount-percent"></p>

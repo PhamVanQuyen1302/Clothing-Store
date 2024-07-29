@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-{{ $title }}
+    {{ $title }}
 @endsection
 @section('css')
     <!-- App favicon -->
@@ -57,7 +57,7 @@
                         <input type="number" class="form-control" id="employeeName" name="promotional_price"
                             placeholder="Enter emploree name">
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Số lượng sản phẩm</label>
                         <input type="number" class="form-control" id="employeeName" name="quantity"
@@ -73,6 +73,30 @@
                         <textarea class="form-control" id="productDescription" name="description" rows="4"
                             placeholder="Nhập mô tả sản phẩm"></textarea>
                     </div>
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header align-items-center d-flex">
+                                <h4 class="card-title mb-0 flex-grow-1">Gallery</h4>
+                                <button type="button" class="btn btn-primary" onclick="addImageGallery()">Thêm ảnh</button>
+                            </div><!-- end card header -->
+                            <div class="card-body">
+                                <div class="live-preview">
+                                    <div class="row gy-4" id="gallery_list">
+                                        <div class="col-md-4" id="gallery_default_item">
+                                            <label for="gallery_default" class="form-label">Image</label>
+                                            <div class="d-flex">
+                                                <input type="file" class="form-control" name="image[]"
+                                                    id="gallery_default">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
                     </div>
@@ -105,4 +129,29 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/admin/assets/js/app.js') }}"></script>
+
+    <script>
+        function addImageGallery() {
+            let id = 'gen' + '_' + Math.random().toString(36).substring(2, 15).toLowerCase();
+            let html = `
+                <div class="col-md-4" id="${id}_item">
+                    <label for="${id}" class="form-label">Image</label>
+                    <div class="d-flex">
+                        <input type="file" class="form-control" name="image[]" id="${id}">
+                        <button type="button" class="btn btn-danger" onclick="removeImageGallery('${id}_item')">
+                            <span class="bx bx-trash"></span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            $('#gallery_list').append(html);
+        }
+
+        function removeImageGallery(id) {
+            if (confirm('Chắc chắn xóa không?')) {
+                $('#' + id).remove();
+            }
+        }
+    </script>
 @endsection

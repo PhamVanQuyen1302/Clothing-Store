@@ -17,3 +17,4 @@
     <meta name="DC.language" content="scheme&#x3D;utf-8&#x20;content&#x3D;vi">
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
     <meta name="google-site-verification" content="ueN8a6L-rHAbBgu2lamINIYDu73uSC2eUs8YTWdlYGo">
+    <meta name="csrf-token" content="{{ csrf_token() }}">  

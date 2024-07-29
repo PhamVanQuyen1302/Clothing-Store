@@ -41,6 +41,8 @@ class ImageController extends Controller
         if($request->isMethod('post')) {
             $data = $request->except('_token');
 
+        
+
             if($request->hasFile('link_image')) {
                 $fileName = $request->file('link_image')->store('upload/images','public');
             } else {

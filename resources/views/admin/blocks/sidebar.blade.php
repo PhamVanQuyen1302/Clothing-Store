@@ -84,6 +84,10 @@
                         Danh sách chức vụ </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link" data-key="t-analytics">
+                        Danh sách đơn hàng </a>
+                </li>
+                <li class="nav-item">
                     <a href="/" class="nav-link" data-key="t-analytics">
                         Quay về trang User </a>
                 </li>

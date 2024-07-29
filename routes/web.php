@@ -3,11 +3,15 @@
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ImageController;
+use App\Http\Controllers\admin\OrderContrller;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\client\AjaxController;
 use App\Http\Controllers\client\AuthClienController;
 use App\Http\Controllers\client\HomeController;
+use App\Http\Controllers\client\OderController;
+use App\Http\Controllers\client\ProductFillterController;
 use App\Http\Middleware\RoleRedirect;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
@@ -28,6 +32,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/{id}/user-infor', [HomeController::class, 'userInfor'])->name('home.infor');
 Route::get('/{id}/product-detail', [HomeController::class, 'productDetail'])->name('home.detail');
 Route::put('/{id}/update', [HomeController::class, 'update'])->name('home.update');
+Route::get('/{id}/product-fillter', [ProductFillterController::class, 'productFiller'])->name('fillter.index');
+Route::get('/filter_data', [AjaxController::class, 'filterData'])->name('filter_data.index');
+Route::match(['get', 'post'], 'add/cart', [AjaxController::class, 'addCart'])->name('cart.add');
+Route::match(['get', 'post'], 'dele/cart', [AjaxController::class, 'deleteCart'])->name('cart.dele');
+Route::get('cart', [AjaxController::class, 'addToCart'])->name('cart.list');
+Route::get('check-out', [OderController::class, 'save'])->name('cart.save');
+Route::get('check-out/success', [OderController::class, 'success'])->name('checkout.success');
+Route::post('/checkout', [OderController::class, 'processCheckout'])->name('checkout.process');
 
 Route::group(['prefix' => 'auth'], function () {
     Route::match(['get', 'post'], 'login', [AuthClienController::class, 'login'])->name('auth.login')->middleware('guest');
@@ -99,5 +111,13 @@ Route::prefix('admin')
                 Route::get('{id}/edit',         [RoleController::class, 'edit'])->name('edit');
                 Route::put('{id}/update',       [RoleController::class, 'update'])->name('update');
                 Route::get('{id}/destroy',   [RoleController::class, 'destroy'])->name('destroy');
+            });
+
+        Route::prefix('orders')
+            ->as('orders.')
+            ->group(function () {
+                Route::get('/',                 [OrderContrller::class, 'index'])->name('index');
+                Route::get('{id}/show',         [OrderContrller::class, 'show'])->name('show');
+                Route::post('update',         [OrderContrller::class, 'update'])->name('update');
             });
     });

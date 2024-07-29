@@ -55,7 +55,6 @@
                                     </div>
                                 </div>
                                 @if (session('id'))
-                                    
                                     <div id="site-account-handle" class="icon-account" aria-label="Open account"
                                         title="Tài khoản">
                                         <a href="/{{ session('id') }}/user-infor">
@@ -65,15 +64,15 @@
                                             </span>
                                         </a>/
                                         <a href="/auth/logout">
-                                            <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">  
-                                                @csrf  
-                                            </form>  
+                                            <form id="logout-form" action="{{ route('auth.logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
                                             <span class="account-menu" aria-hidden="true">
                                                 Đăng xuất
                                             </span>
                                         </a>
                                     </div>
-                                    
                                 @else
                                     <div id="site-account-handle" class="icon-account" aria-label="Open account"
                                         title="Tài khoản">
@@ -93,14 +92,23 @@
                                 @endif
 
 
+                                @php
+                                    $quantity = 0;
 
+                                    if (session('cart')) {
+                                        $cart = session('cart');
+                                        foreach ($cart as $item) {
+                                            $quantity += $item['quantity'];
+                                        }
+                                    }
+                                @endphp
 
                                 <div id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
-                                    <a href="/cart">
+                                    <a href="{{ route('cart.list') }}">
                                         <span class="cart-menu" aria-hidden="true">
                                             <i class="far fa-shopping-cart"></i>
                                             <span class="count-holder">
-                                                <span class="count">(0)</span>
+                                                <span class="count">({{ $quantity }})</span>
                                             </span>
                                         </span>
                                     </a>
@@ -123,15 +131,23 @@
                         <img style="max-width: 200px" alt="Logo" src="../../assets/img/nhanh (1).png" />
                     </a>
                 </div>
+                @php
+                    use App\Models\Category;
+                    $categories = Category::query()->get();
+                @endphp
                 <div class="hidden-xs hidden-sm">
                     <div id="nav-menu">
                         <nav role="navigation" class="main-nav-menu">
                             <ul class="menu__list menu__list--top tp_menu">
                                 <li class="menu__item mega tp_menu_item"><a href="/" title="Trang chủ"
                                         class="menu__link">Trang chủ</a></li>
-                                <li class="menu__item mega tp_menu_item">
-                                    <a href="#" title="Giày Adidas" class="menu__link">Giayf Nike</a>
-                                </li>
+                                @foreach ($categories as $item)
+                                    <li class="menu__item mega tp_menu_item">
+                                        <a href="{{ route('fillter.index',$item->id) }}" title="Giày Adidas"
+                                            class="menu__link">{{ $item['name'] }}</a>
+                                    </li>
+                                @endforeach
+
 
 
                                 <li class="menu__item mega tp_menu_item"><a href="/tin-tuc" title="Tin tức chung"

@@ -4,21 +4,22 @@
 @endsection
 
 @section('content')
-<script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/cloudzoom/cloudzoom.js?v=2"></script>
-<script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.validationEngine.js?v=2"></script>
-<script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.validationEngine-vi.js?v=2">
-</script>
-<script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.carouFredSel-6.2.1-packed.js?v=2">
-</script>
-<script defer type="text/javascript" src="https://web.nvnstatic.net/tp/T0320/js/pview.js?v=5"></script>
-<link rel="stylesheet" href="https://web.nvnstatic.net/css/validationEngine.jquery.css?v=2" type="text/css">
-<link rel="stylesheet" href="https://web.nvnstatic.net/js/jquery/cloudzoom/cloudzoom.css?v=2" type="text/css">
-<link rel="stylesheet" href="https://web.nvnstatic.net/tp/T0320/css/view.css?v=2" type="text/css">
-<link rel="canonical"
-    href="http://t0320.store.nhanh.vn/giay-nike-air-force-1-shadow-se-womens-solar-red-db3902100-p37834087.html" />
-<input type="hidden" value="37834087" id="idPro">
-<input type="hidden" value="2990000" id="pricePro">
-<input type="hidden" value="Giày Nike Air Force 1 Shadow SE Women’s “Solar Red” DB3902-100" id="namePro">
+    <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/cloudzoom/cloudzoom.js?v=2"></script>
+    <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.validationEngine.js?v=2"></script>
+    <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.validationEngine-vi.js?v=2">
+    </script>
+    <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.carouFredSel-6.2.1-packed.js?v=2">
+    </script>
+    <script defer type="text/javascript" src="https://web.nvnstatic.net/tp/T0320/js/pview.js?v=5"></script>
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/validationEngine.jquery.css?v=2" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/js/jquery/cloudzoom/cloudzoom.css?v=2" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/tp/T0320/css/view.css?v=2" type="text/css">
+    <link rel="canonical"
+        href="http://t0320.store.nhanh.vn/giay-nike-air-force-1-shadow-se-womens-solar-red-db3902100-p37834087.html" />
+    <input type="hidden" value="37834087" id="idPro">
+    <input type="hidden" value="2990000" id="pricePro">
+    <input type="hidden" value="Giày Nike Air Force 1 Shadow SE Women’s “Solar Red” DB3902-100" id="namePro">
+
     <body class="tp_background tp_text_color">
         <div class="dtsWrp tp_product_detail">
             <div class="product-wrapper clearfix">
@@ -32,10 +33,10 @@
                                     </li>
                                     <li>
                                         <a class="569762"
-                                            href="&#x2F;giay-nike-pc569762.html">{{ $model->product->category->name }}</a>
+                                            href="&#x2F;giay-nike-pc569762.html">{{ $model->category->name }}</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('home.detail', $model->id) }}">{{ $model->product->name }}</a>
+                                        <a href="{{ route('home.detail', $model->id) }}">{{ $model->name }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -50,10 +51,12 @@
                             <div class="product-img-main">
                                 <div class="slider-for">
                                     <div class="item">
-                                        <a class="imgView" href="{{ Storage::url($model->link_image) }}"
-                                            data-fancybox="images">
-                                            <img alt="{{ $model->product->name }}" class="cloudzoom-gallery z"
-                                                src="{{ Storage::url($model->link_image) }}" />
+                                        <a class="imgView" href="#" data-fancybox="images">
+                                            @foreach ($model->image as $image)
+                                                <img alt="{{ $model->name }}" class="cloudzoom-gallery z"
+                                                    src="{{ Storage::url($image->link_image) }}" />
+                                            @endforeach
+
                                         </a>
                                     </div>
 
@@ -71,24 +74,23 @@
 
                         <div class="col-md-7 product-info clearfix">
                             <div class="product-infomation">
-                                <h1 class="tp_product_detail_name">{{ $model->product->name }}</h1>
+                                <h1 class="tp_product_detail_name">{{ $model->name }}</h1>
                                 <div class="cate-name">
                                     <p>Danh mục: <a href="/giay-nike-pc569762.html"><span class="nameCategoryView"
-                                                style="color: #de0c19;">{{ $model->product->category->name  }}</span></a></p>
+                                                style="color: #de0c19;">{{ $model->category->name }}</span></a></p>
                                     <p class="p_code">Mã sản phẩm: <span class="pview-code" style="color: #de0c19;"></span>
                                     </p>
                                 </div>
 
                                 <div class="price-product">
-                                    <span
-                                        class="discountPrice tp_product_detail_price">{{ number_format($model->product->price) }}
+                                    <span class="discountPrice tp_product_detail_price">{{ number_format($model->price) }}
                                         ₫</span>
                                 </div>
                                 <hr class="hidden-sm hidden-xs" />
                             </div>
 
                             <div class="product-selection">
-                                <div class="size req clearfix" data-column="i2">
+                                {{-- <div class="size req clearfix" data-column="i2">
                                     <label>Size</label>
                                     <div class="clearfix">
                                         <a href="#" rel="nofollow" class="size-link">40</a>
@@ -96,27 +98,28 @@
                                     </div>
                                     <div style="display: none">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="product-quantity clearfix">
                                     <label>Số lượng</label>
-                                    <span class="number-down" >-</span>
-                                    <input type="number" id="quantity" name="quantity" value="1" min="1"
-                                        max="5000" />
-                                    <span class="number-up" >+</span>
+                                    <span class="number-down">-</span>
+                                    <input type="number" id="quantity" name="quantity" min="1"
+                                        max="{{ $model->quantity }}" value="1" min="1" max="5000" />
+                                    <span class="number-up">+</span>
                                 </div>
-                                {{-- <input type="hidden" name="" id="product-info"
-                                    data-product-id="{{ $product['p_id'] }}"> --}}
+                                <input type="hidden" name="" id="product-info"
+                                    data-product-id="{{ $model->id }}">
                                 <div class="purchase-product">
+
                                     <button id="add-to-cart-btn"
                                         class="btn-outline btn-addCart add-to-cart unsel btn addtocart-modal"
-                                        selId="37834087" data-psid="37834087" title ck="0" disabled>
+                                        selId="37834087" data-psid="37834087" title ck="0">
                                         <img width="18" class="lazyload"
                                             data-src="https://web.nvnstatic.net/tp/T0320/img/tmp/img_290616.png?v=3">
                                         Thêm vào giỏ hàng
                                     </button>
                                     <button id="buy-now-btn"
                                         class="btn-outline btn-addCart addnow unsel btn addtocart-modal buyNow"
-                                        selId="37834087" data-psid="37834087" title ck="0" disabled>
+                                        selId="37834087" data-psid="37834087" title ck="0">
                                         Mua ngay
                                     </button>
                                     <div class="cart-modal">
@@ -269,7 +272,7 @@
                             <div id="tab1" class="contentTab active" style="padding: 20px 0;">
                                 <div class="">
                                     <p>
-                                        {{ $model->product->description  }}
+                                        {{ $model->description }}
                                     </p>
                                 </div>
                             </div>
@@ -353,9 +356,8 @@
                                 <h2 class="title-hd"><a href="#">Có thể bạn quan tâm</a></h2>
                             </div>
                         </div>
-                       
+
                         @php
-                            
 
                         @endphp
                         <div class="slide-wrapper slide-product relate-product">
@@ -458,7 +460,7 @@
                 object-fit: scale-down;
                 transition: all 4s;
             }
-    
+
             .main-whynote .box-why-note .title-why h2 a {
                 color: #de0000;
                 transition: all 4s;
@@ -470,7 +472,7 @@
                 color: #fff;
                 opacity: 70%;
             }
-    
+
             #nav-menu .main-nav-menu .menu__list--top>li>a {
                 padding: 10px;
                 border-radius: 10px;
@@ -496,7 +498,7 @@
                 -webkit-transition: all 10s;
                 transition: all 4s;
             }
-    
+
             .bannercategory .box-sport-content .more {
                 border-radius: 5px;
                 position: absolute;
@@ -516,9 +518,94 @@
                 -webkit-transition: all .5s;
                 transition: all .5s;
             }
-        </style><input type="hidden" id="bussinessId" value="97757"><input type="hidden" value="" id="uctk"
-            name="uctk" /><input type="hidden" id="clienIp" value="113.190.83.234">
+        </style><input type="hidden" id="bussinessId" value="97757"><input type="hidden" value=""
+            id="uctk" name="uctk" /><input type="hidden" id="clienIp" value="113.190.83.234">
+
+        <script>
+            var quantityInput = document.getElementById('quantity');
+            var numberMinus = document.querySelector('.number-down');
+            var numberPlus = document.querySelector('.number-up');
+
+            // Sự kiện click cho nút giảm số lượng
+            numberMinus.addEventListener('click', function() {
+                var currentValue = parseInt(quantityInput.value);
+                if (currentValue > parseInt(quantityInput.min)) {
+                    quantityInput.value = currentValue - 1;
+
+                }
+            });
+
+            // Sự kiện click cho nút tăng số lượng
+            numberPlus.addEventListener('click', function() {
+                var currentValue = parseInt(quantityInput.value);
+                if (currentValue < parseInt(quantityInput.max)) {
+                    quantityInput.value = currentValue + 1;
+
+                }
+            });
+
+            // Sự kiện thay đổi giá trị trong ô input
+            quantityInput.addEventListener('change', function() {
+                var currentValue = parseInt(quantityInput.value);
+                var minValue = parseInt(quantityInput.min);
+                var maxValue = parseInt(quantityInput.max);
+
+                if (currentValue < minValue) {
+                    quantityInput.value = minValue;
+                } else if (currentValue > maxValue) {
+                    quantityInput.value = maxValue;
+                }
+            });
+
+            function totalQuantity() {
+                parseInt(quantityInput.value)
+            }
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                // Định nghĩa hàm addcart  
+
+                // Set CSRF token cho mỗi yêu cầu AJAX  
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                function addcart(id, quantity) {
+
+
+                    $.post("/add/cart", {
+                        'id': id,
+                        'quantity': quantity
+                    }, function(data) {
+                        if (data.status === 'success') {
+                            $('.count').text(data.totalQuantity);
+                        } else if (data.status === 'error') {
+                            alert(data.message); // Hiển thị thông báo lỗi nếu chưa đăng nhập  
+                        }
+                    }).fail(function(xhr) {
+                        if (xhr.status === 401) {
+                            alert('You need to log in to add products to the cart.');
+                        }
+                    });
+                }
+
+                // Định nghĩa hàm totalQuantity  
+                function totalQuantity() {
+                    return parseInt($('#quantity').val());
+                }
+
+                // Kích hoạt sự kiện cho nút thêm vào giỏ hàng  
+                $('#add-to-cart-btn').click(function() {
+                    var productId = $('#product-info').data('product-id');
+                    var quantity = totalQuantity();
+                    addcart(productId, quantity);
+                });
+
+                
+            });
+        </script>
     </body>
 @endsection
-
-

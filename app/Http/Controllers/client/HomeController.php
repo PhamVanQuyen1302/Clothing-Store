@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\User;
@@ -16,13 +17,14 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data = Image::query()->with('product')->get();
+        $data = Product::query()->with('image')->get();
+
+        
         return view(self::PATH_VIEW . __FUNCTION__,compact('data'));
     }
 
     public function userInfor(string $id)
     {
-
         $model = User::query()->with('role')->findOrFail($id);
         return view(self::PATH_VIEW . __FUNCTION__, compact('model'));
     }
@@ -56,7 +58,7 @@ class HomeController extends Controller
 
     public function productDetail(string $id) {
 
-        $model = Image::query()->with('product')->findOrFail($id);
+        $model = Product::query()->with('image')->findOrFail($id);
 
         return view(self::PATH_VIEW . __FUNCTION__ ,compact('model'));
     }
