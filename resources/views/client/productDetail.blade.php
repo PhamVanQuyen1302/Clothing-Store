@@ -267,7 +267,7 @@
                         <div id="pContent" class="col-lg-9 col-md-8 col-xs-12 col-sm-12">
                             <div class="title">
                                 <span class="tab active" data-show="#tab1">Mô tả</span>
-                                <span class="tab clickSocial" data-show="#tab2">Đánh giá</span>
+                                <span class="tab clickSocial" data-show="#tab2">Bình luận</span>
                             </div>
                             <div id="tab1" class="contentTab active" style="padding: 20px 0;">
                                 <div class="">
@@ -276,55 +276,65 @@
                                     </p>
                                 </div>
                             </div>
-                            <div style="margin-top: 10px;">
+                            {{-- <div style="margin-top: 10px;">
                                 <div class="fb-comments tp_product_detail_comment"
                                     data-href="http://t0320.store.nhanh.vn/giay-nike-air-force-1-shadow-se-womens-solar-red-db3902100-p37834087.html"
                                     data-width="100%" data-numposts="5"></div>
-                            </div>
+                            </div> --}}
                             <div id="tab2" class="contentTab showSocial">
 
-                                <h3>Mời bạn đánh giá hoặc đặt câu hỏi về <strong>Giày Nike Air Force 1 Shadow SE Women’s
-                                        “Solar Red” DB3902-100</strong></h3>
+                                @php
+                                    $userId = auth()->id();
+                                    $hasOrdered = \App\Models\Order::where('user_id', $userId)->exists(); // Giả sử bạn có model Order
+                                @endphp
                                 <div class="row">
-                                    <div class="col-md-4 col-xs-12 col-sm-12 rate-content">
-                                        <h6>Đánh giá trung bình</h6>
-                                        <div class="rate-c">0 /5</div>
-                                        <div class="pageView">
-                                            <p data-scroll="#tab2" id="voteView0" class="si voteView"></p>
-                                        </div>
-                                    </div>
                                     <div class="col-md-4 col-xs-12 col-sm-12 row_detail_number rate-content">
-                                        <form action="" method="post">
-                                            <div>
-                                                <p style="color: #FE5335">Đánh giá sản phẩm</p>
-                                                <p class="vote">
-                                                    <span class="si" data-rate="1"></span>
-                                                    <span class="si" data-rate="2"></span>
-                                                    <span class="si" data-rate="3"></span>
-                                                    <span class="si" data-rate="4"></span>
-                                                    <span class="si" data-rate="5"></span>
-                                                    <i class="clearfix"></i>
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p style="color: #FE5335">Nội dung đánh giá</p>
-                                                <textarea id="comment" class="input" style="width: 100%" placeholder="Nội dung tối thiểu 30 ký tự"></textarea>
-                                            </div>
-                                        </form>
+                                        @if (Auth::check() && $hasOrdered)
+                                            <form action="{{ route('comments.store') }}" method="post"
+                                                id="commentForm">
+                                                @csrf
+                                                <div>
+                                                    <p style="color: #FE5335">Nội dung đánh giá</p>
+                                                    <textarea id="comment" name="content" class="input" style="width: 100%"
+                                                        placeholder="Nội dung tối thiểu 30 ký tự"></textarea>
+
+                                                </div>
+                                            </form>
+                                        @else
+                                            <p>Bạn cần đăng nhập và đặt hàng để có thể bình luận.</p>
+                                        @endif
                                     </div>
                                     <div class="col-md-4 col-xs-12 col-sm-12 send-reviews rate-content">
                                         <div id="btnRate">
-                                            <a class="btnSignin btnRed btnColor" rel="nofollow" href="/user/signin"
-                                                style="white-space: nowrap;">Đăng nhập để đánh giá</a>
+                                            <button class="" id="post" style="white-space: nowrap;">Bình
+                                                luận</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="content-text bg_w" style="display: inline-block">
-                                    <h4>Đánh giá sản phẩm</h4>
-                                    <p>Chưa có bình luận đánh giá nào</p>
+                                    <div class="container-comment">
+                                        <ul class="comments" id="comments-list">
+                                            @foreach ($comments as $item)
+                                                <li class="comment">
+                                                    <div class="user-info">
+
+                                                        <img src="{{ Storage::url($item->user->avatar) }}"
+                                                            alt="User Image">
+
+
+                                                        <div class="username"> {{ $item->user->name }}</div>
+                                                    </div>
+                                                    <div class="comment-text" id="">
+                                                        <b>Nội dung:</b> {{ $item->content }}
+                                                    </div>
+                                                    <div class="comment-date">{{ $item->time }}</div>
+                                                </li>
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+
                                 </div>
-                                <!-- end danh gia -->
-                                <p>Chỉ những khách hàng đã đăng nhập và mua sản phẩm này mới có thể đưa ra đánh giá.</p>
                             </div>
                             <div id="tab3" class="contentTab">
                             </div>
@@ -439,6 +449,93 @@
 
         <input type="hidden" class="fanpageId" value="">
         <meta name="google-site-verification" content="ueN8a6L-rHAbBgu2lamINIYDu73uSC2eUs8YTWdlYGo" />
+        <style>
+            h1 {
+                text-align: center;
+            }
+
+            .comment-form {
+                margin-bottom: 20px;
+            }
+
+            .comment-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            .comment-form button {
+                background-color: #4caf50;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .comments {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .comment {
+                border-bottom: 1px solid #ddd;
+                padding: 10px;
+                position: relative;
+            }
+
+            .comment .user-info {
+                display: flex;
+                align-items: center;
+                margin-bottom: 5px;
+            }
+
+            .comment .user-info img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            .comment .user-info .username {
+                font-weight: bold;
+            }
+
+            .comment .comment-text {
+                margin-bottom: 5px;
+            }
+
+            .comment .comment-date {
+                font-size: 0.8em;
+                color: #888;
+            }
+
+            .comment .actions {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+
+            .comment .actions button {
+                background-color: #3498db;
+                color: #fff;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 4px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+
+            .comment .actions button.delete {
+                background-color: #e74c3c;
+            }
+
+            .edit-comment-input {
+                display: none;
+            }
+        </style>
         <Style>
             .bannercategory .box-sport-content img {
                 width: 100%;
@@ -561,7 +658,7 @@
                 parseInt(quantityInput.value)
             }
         </script>
-
+        {{-- Thêm giở hàng --}}
         <script>
             $(document).ready(function() {
                 // Định nghĩa hàm addcart  
@@ -604,7 +701,51 @@
                     addcart(productId, quantity);
                 });
 
-                
+
+            });
+        </script>
+
+        {{-- Bình luận --}}
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $('#post').on('click', function(event) {
+                    event.preventDefault(); // Ngăn chặn hành động mặc định của nút  
+
+                    // Lấy nội dung bình luận  
+                    var commentContent = $('#comment').val().trim();
+                    var productId = $('#product-info').data('product-id');
+                    // Kiểm tra độ dài của bình luận  
+                    if (commentContent.length < 30) {
+                        alert('Nội dung đánh giá tối thiểu 30 ký tự.');
+                        return;
+                    }
+
+                    // Gửi bình luận qua Ajax  
+                    $.ajax({
+                        url: '/comments', // URL để gửi bình luận, thay đổi thành URL phù hợp  
+                        method: 'POST',
+                        data: {
+                            content: commentContent,
+                            product_id: productId, // ID của sản phẩm, thay đổi theo yêu cầu thực tế  
+                            // Thêm các thông tin khác nếu cần thiết, như user_id, token CSRF,...  
+                        },
+                        success: function(response) {
+                            // Xử lý thành công, ví dụ hiển thị bình luận vừa gửi  
+                            $('#comment').val(''); // Làm trống ô nhập  
+                            // $('.content-text').prepend('<p>' + response.content +
+                            //     '</p>'); // Thêm bình luận mới vào danh sách bình luận  
+                        },
+                        error: function(xhr) {
+                            // Xử lý lỗi  
+                            alert('Có lỗi xảy ra, vui lòng thử lại.');
+                        }
+                    });
+                });
             });
         </script>
     </body>

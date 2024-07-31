@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -39,7 +41,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         // dd($request->all());
         if ($request->isMethod('post')) {
@@ -74,8 +76,10 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $title = "Chi tiết sản phẩm";
-        $model = Product::query()->with('category')->findOrFail($id);
-        return view(self::PATH_VIEW . __FUNCTION__, compact('title', 'model'));
+        $model = Product::query()->with('category','image')->findOrFail($id);
+
+        $comments = Comment::query()->with('user')->where('product_id', $id)->get();
+        return view(self::PATH_VIEW . __FUNCTION__, compact('title', 'model','comments'));
     }
 
     /**
@@ -93,7 +97,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
         $model = Product::query()->with('category')->findOrFail($id);
 

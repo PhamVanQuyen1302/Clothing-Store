@@ -115,6 +115,7 @@
                                     <div class="loadBodyCart"></div>
                                 </div>
                                 <div class="language_list">
+                                   
                                 </div>
                             </div>
                         </div>
@@ -143,7 +144,7 @@
                                         class="menu__link">Trang chủ</a></li>
                                 @foreach ($categories as $item)
                                     <li class="menu__item mega tp_menu_item">
-                                        <a href="{{ route('fillter.index',$item->id) }}" title="Giày Adidas"
+                                        <a href="{{ route('fillter.index', $item->id) }}" title="Giày Adidas"
                                             class="menu__link">{{ $item['name'] }}</a>
                                     </li>
                                 @endforeach

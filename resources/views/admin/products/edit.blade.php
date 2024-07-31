@@ -38,23 +38,43 @@
                             <option value="{{ $id }}" {{ ($id == $model->category->id ? 'selected' : '')}}>{{ $name }}</option>
                         @endforeach
                     </select>
+                       @error('category_id')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <select class="form-select mb-3" name="status" aria-label="Default select example">
                         <option selected disabled>Chọn trạng thái cho sản phẩm</option>
                         <option value="1" {{ $model->status == 1 ? 'selected' : '' }}>còn Hàng</option>
                         <option value="0" {{ $model->status == 0 ? 'selected' : '' }}>hết Hàng</option>
                     </select>
+                       @error('status')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Tên sản phẩm</label>
                         <input type="text" class="form-control" id="employeeName" name="name"
                             value="{{ $model->name }}"    
                         placeholder="Enter emploree name">
                     </div>
+                       @error('name')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Giá sản phẩm</label>
                         <input type="number" class="form-control" id="employeeName" name="price"
                             value="{{ $model->price }}"    
                         placeholder="Enter emploree name">
                     </div>
+                       @error('price')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Giá khuyến mại</label>
                         <input type="number" class="form-control" id="employeeName" name="promotional_price"
@@ -62,23 +82,44 @@
                         placeholder="Enter emploree name">
                     </div>
                     
+                       @error('promotional_price')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Số lượng sản phẩm</label>
                         <input type="number" class="form-control" id="employeeName" name="quantity"
                             value="{{ $model->quantity }}"    
                         placeholder="Enter emploree name">
                     </div>
+                       @error('quantity')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Ngày Nhập</label>
                         <input type="date" class="form-control" id="employeeName" name="date"
                             value="{{ $model->date }}"    
                         placeholder="Enter emploree name">
                     </div>
+                       @error('date')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="productDescription" class="form-label">Mô tả sản phẩm</label>
                         <textarea class="form-control" id="productDescription" name="description" rows="4"
                             placeholder="Nhập mô tả sản phẩm">{{ $model->description}}</textarea>
                     </div>
+                       @error('description')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Cập nhập sản phẩm</button>
                     </div>

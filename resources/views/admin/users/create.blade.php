@@ -37,26 +37,47 @@
                         <input type="text" class="form-control" id="employeeName" name="name"
                             placeholder="Enter emploree name">
                     </div>
+                    @error('name')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="employeeName" name="email"
                             placeholder="Enter emploree name">
                     </div>
+                    @error('email')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Số điện thoại</label>
                         <input type="number" class="form-control" id="employeeName" name="tel"
                             placeholder="Enter emploree name">
                     </div>
+                    @error('tel')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Ảnh đại diện</label>
                         <input type="file" id="file_input" class="form-control" name="avatar">
-                        <img src="" class="mt-3 mb-3" id="img_user" width="100px" alt="" style="display: none">
+                        <img src="" class="mt-3 mb-3" id="img_user" width="100px" alt=""
+                            style="display: none">
                     </div>
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Địa chỉ</label>
                         <input type="text" class="form-control" id="employeeName" name="adđress"
                             placeholder="Enter emploree name">
                     </div>
+                    @error('adđress')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Giới tính</label>
                         <select class="form-select mb-3" name="gender" aria-label="Default select example">
@@ -64,16 +85,31 @@
                             <option value="0" disabled>Nữ</option>
                         </select>
                     </div>
+                    @error('gender')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Ngày thánh năm sinh</label>
                         <input type="date" class="form-control" id="employeeName" name="age"
                             placeholder="Enter emploree name">
                     </div>
+                    @error('age')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Mật khẩu:</label>
                         <input type="text" class="form-control" id="employeeName" name="password"
                             placeholder="Enter emploree name">
                     </div>
+                    @error('password')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Chức Vụ</label>
                         <select class="form-select mb-3" name="role_id" aria-label="Default select example">
@@ -83,6 +119,11 @@
                             @endforeach
                         </select>
                     </div>
+                    @error('role_id')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
 
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Trang thái</label>
@@ -91,6 +132,11 @@
                             <option value="0" disabled>bị khóa</option>
                         </select>
                     </div>
+                    @error('status')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
 
                     <div class="text-center mt-3 mb-3">
                         <button type="submit" class="btn btn-primary">{{ $title }}</button>

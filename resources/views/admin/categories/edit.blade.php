@@ -62,6 +62,11 @@
                         <input type="text" class="form-control" id="fullnameInput" value="{{ $model->name }}"
                             name="name" placeholder="Enter your name">
                     </div>
+                    @error('name')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="col-md-12">
                         <label for="fullnameInput" class="form-label">Ảnh danh mục</label>
                         <input type="file" class="form-control" id="" value="{{ $model->image }}"
@@ -74,6 +79,11 @@
                         <input type="text" class="form-control" id="fullnameInput" value="{{ $model->description }}"
                             name="description" placeholder="Enter your name">
                     </div>
+                    @error('description')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="col-12">
                         <div class="text-center">
                             <button type="submit" class="btn btn-success">Cập nhập danh mục</button>

@@ -25,29 +25,42 @@
     <link href="{{ asset('assets/admin/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
-    <div class="w-100 d-flex justify-content-center align-items-center">
-        <div class="col-10">
-            <h2 class="text-center">{{ $title }}</h2>
-            <div class="row">
-                <form action="{{ route('admin.roles.store') }}" enctype="multipart/form-data" method="POST"
-                    class="row g-3">
-                    @csrf
+<div class="w-100 d-flex justify-content-center align-items-center">  
+    <div class="col-10">  
+        <h2 class="text-center">{{ $title }}</h2>  
+        
+        <!-- Hiển thị thông báo thành công nếu có -->  
+        @if(session('success'))  
+            <div class="alert alert-success">  
+                {{ session('success') }}  
+            </div>  
+        @endif  
+
+        <div class="row">  
+            <form action="{{ route('admin.roles.store') }}" enctype="multipart/form-data" method="POST"  
+                class="row g-3">  
+                @csrf  
             
-                    <div class="col-md-12">
-                        <label for="fullnameInput" class="form-label">Tên Chức năng</label>
-                        <input type="text" class="form-control" id="file_input" name="name"
-                            placeholder="Enter your name">
-                    </div>
-                
-                    <div class="col-12">
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-success">{{ $title }}</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                <div class="col-md-12">  
+                    <label for="nameInput" class="form-label">Tên Chức năng</label>  
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="nameInput" name="name"  
+                        value="{{ old('name') }}" placeholder="Nhập tên chức năng">  
+                    
+                    <!-- Hiển thị thông báo lỗi nếu có -->  
+                    @error('name')  
+                        <div class="invalid-feedback">{{ $message }}</div>  
+                    @enderror  
+                </div>  
+            
+                <div class="col-12">  
+                    <div class="text-center">  
+                        <button type="submit" class="btn btn-success">{{ $title }}</button>  
+                    </div>  
+                </div>  
+            </form>  
+        </div>  
+    </div>  
+</div>
 @endsection
 @section('js')
     <script src="{{ asset('assets/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

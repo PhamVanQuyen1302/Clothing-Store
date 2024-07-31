@@ -35,8 +35,6 @@
                 <div class="card-body">
                     <div class="listjs-table" id="customerList">
                         <div class="row g-4 mb-3">
-
-
                             <div class="table-responsive table-card mt-3 mb-1">
                                 <table class="table align-middle table-nowrap" id="customerTable">
                                     <thead class="table-light">
@@ -52,7 +50,6 @@
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
-
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -82,6 +79,20 @@
                                             </td>
                                             <td>Mô tả</td>
                                             <td>{{ $model->description }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll"
+                                                        value="option">
+                                                </div>
+                                            </td>
+                                            <td>Hình ảnh</td>
+                                            <td>
+                                                @foreach ($model->image as $item)
+                                                    <img src="{{ Storage::url($item->link_image) }}" width="50px" alt="">
+                                                @endforeach
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -131,13 +142,12 @@
                                                 </div>
                                             </td>
                                             <td>Trạng thái</td>
-                                            <td>{!! $model->status == 1 ? '<span class="bg-success">Còn hàng</span>' : '<span class="bg-danger">Hết hàng</span>' !!}</td> <!-- Hiển thị tên danh mục -->
+                                            <td>{!! $model->status == 1 ? '<span class="bg-success">Còn hàng</span>' : '<span class="bg-danger">Hết hàng</span>' !!}</td> <!-- Hiển thị trạng thái -->
                                         </tr>
                                         <!-- Thêm các thuộc tính khác nếu cần -->
                                     </tbody>
-
                                 </table>
-                                <a href="{{ route('admin.products.index') }}" class="btn btn-danger">Quay về danh sách</a>
+                               
                                 <div class="noresult" style="display: none">
                                     <div class="text-center">
                                         <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
@@ -148,6 +158,26 @@
                                             any orders for you search.</p>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Phần bình luận -->
+                            <div class="col-12 mt-4">
+                                <h5>Bình luận</h5>
+
+                                @if ($comments->isEmpty())
+                                    <p>Chưa có bình luận nào cho sản phẩm này.</p>
+                                @else
+                                    <ul class="list-group">
+                                        @foreach ($comments as $comment)
+                                            <li class="list-group-item">
+                                                <strong>{{ $comment->user->name }}:</strong>
+                                                <p>{{ $comment->content }}</p>
+                                                <small
+                                                    class="text-muted">{{ $comment->created_at->format('d/m/Y H:i') }}</small>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </div>
 
                             <div class="d-flex justify-content-end">
@@ -166,6 +196,7 @@
                 </div>
                 <!-- end col -->
             </div>
+        <a href="{{ route('admin.products.index') }}" class="btn btn-danger">Quay về danh sách</a>
             <!-- end col -->
         </div>
     @endsection

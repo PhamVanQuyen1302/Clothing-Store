@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Add-Categories
+    {{ $title }}
 @endsection
 @section('css')
     <!-- App favicon -->
@@ -28,31 +28,21 @@
     <div class="w-100 d-flex justify-content-center align-items-center">
         <div class="col-10">
             <h2 class="text-center">{{ $title }}</h2>
-
-            <!-- Hiển thị thông báo thành công nếu có -->
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
             <div class="row">
-                <form action="{{ route('admin.roles.update', $model->id) }}" enctype="multipart/form-data" method="POST"
+                <form action="{{ route('admin.order-status.store') }}" enctype="multipart/form-data" method="POST"
                     class="row g-3">
                     @csrf
-                    @method('PUT')
-
                     <div class="col-md-12">
-                        <label for="nameInput" class="form-label">Tên Chức năng</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="nameInput"
-                            name="name" value="{{ old('name', $model->name) }}" placeholder="Nhập tên chức năng">
+                        <label for="fullnameInput" class="form-label">Tên trạng thái</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="fullnameInput"
+                            name="name" placeholder="Enter name" value="{{ old('name') }}">
 
-                        <!-- Hiển thị thông báo lỗi nếu có -->
                         @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
-
                     <div class="col-12">
                         <div class="text-center">
                             <button type="submit" class="btn btn-success">{{ $title }}</button>
@@ -86,4 +76,5 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/admin/assets/js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @endsection

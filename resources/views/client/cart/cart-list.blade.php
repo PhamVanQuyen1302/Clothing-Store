@@ -28,8 +28,8 @@
                         @php
                             $cart = session('cart');
                         @endphp
-                        @foreach ($cart as $item)
-                            <div class="margin-bottom-0">
+                        <div class="margin-bottom-0">
+                           
                                 <div class="bg-scroll">
                                     <div class="cart-thead">
                                         <div style="width: 19%; ">Sản phẩm</div>
@@ -40,6 +40,7 @@
                                         <div style="width: 13%;" class="a-center">Thành tiền</div>
                                         <div style="width: 5%" class="a-center">Xóa</div>
                                     </div>
+                                    @foreach ($cart as $item)
                                     <div class="cart-tbody">
 
                                         <div class="item-cart cartItem_37834033" psId="37834033">
@@ -90,9 +91,10 @@
                                         </div>
 
                                     </div>
+                                    @endforeach
                                 </div>
-                            </div>
-                        @endforeach
+                          
+                        </div>
                     @else
                         <div class="alert alert-warning">
                             <p>Chưa có sản phẩm nào !!</p>
@@ -114,7 +116,8 @@
                                                     @endif
                                                 </strong>
                                             </div>
-                                            <button onclick="window.location.href='{{ route('cart.save') }}'" type="button"
+                                            <button onclick="window.location.href='{{ route('cart.save') }}'"
+                                                type="button"
                                                 class="tp_button btn btn-primary button btn-proceed-checkout f-right"
                                                 title="Tiến hành thanh toán">
                                                 <span style=" text-transform: initial;">Tiến hành thanh toán</span>
@@ -286,7 +289,7 @@
                     'id': id,
                     'quantity': 0
                 }, function(data) {
-                    $('#count-holder').load('/cart #count-holder');
+                    $('.cart-tbody').load('/cart .cart-tbody');
                     $('#page_cart').load('/cart #page_cart');
                 });
             }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CartDetail;
+use App\Models\Comment;
 use App\Models\Product;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -75,8 +77,8 @@ class AjaxController extends Controller
             // Initial cart setup  
             $cart = session()->get('cart', []);
             $cart[$productId] = isset($cart[$productId]) ?
-                ['id'=>$product->id,'quantity' => $cart[$productId]['quantity'] + $quantity, 'name' => $product->name, 'price' => $product->price, 'image' => $product->image] :
-                ['id'=>$product->id,'quantity' => $quantity, 'name' => $product->name, 'price' => $product->price, 'image' => $product->image];
+                ['id' => $product->id, 'quantity' => $cart[$productId]['quantity'] + $quantity, 'name' => $product->name, 'price' => $product->price, 'image' => $product->image] :
+                ['id' => $product->id, 'quantity' => $quantity, 'name' => $product->name, 'price' => $product->price, 'image' => $product->image];
 
             // Save the cart to the session  
             session()->put('cart', $cart);
@@ -124,31 +126,48 @@ class AjaxController extends Controller
     }
 
 
-    public function deleteCart(Request $request) {
-        $productId = $request->input('id');  
+    public function deleteCart(Request $request)
+    {
+        $productId = $request->input('id');
 
         // Xóa sản phẩm khỏi session  
-        $cart = session()->get('cart', []);  
-        if (array_key_exists($productId, $cart)) {  
+        $cart = session()->get('cart', []);
+        if (array_key_exists($productId, $cart)) {
             unset($cart[$productId]); // Xóa sản phẩm khỏi giỏ hàng trong session  
             session()->put('cart', $cart); // Cập nhật lại session  
-        }  
+        }
 
         // Nếu sử dụng cơ sở dữ liệu, xóa sản phẩm từ CartDetail  
         $userId = auth()->id(); // Lấy ID người dùng  
-        $cartModel = Cart::where('user_id', $userId)->first();  
+        $cartModel = Cart::where('user_id', $userId)->first();
 
-        if ($cartModel) {  
-            $cartDetail = CartDetail::where('cart_id', $cartModel->id)  
-                ->where('product_id', $productId)  
-                ->first();  
+        if ($cartModel) {
+            $cartDetail = CartDetail::where('cart_id', $cartModel->id)
+                ->where('product_id', $productId)
+                ->first();
 
-            if ($cartDetail) {  
+            if ($cartDetail) {
                 $cartDetail->delete(); // Xóa sản phẩm khỏi bảng chi tiết giỏ hàng  
                 $cartModel->delete();
-            }  
-        }  
+            }
+        }
 
-        return response()->json(['status' => 'success', 'message' => 'Product removed from cart.']);  
-    }  
+        return response()->json(['status' => 'success', 'message' => 'Product removed from cart.']);
+    }
+
+    public function comment(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            // Khởi tạo bình luận mới  
+            $comment = new Comment();
+            $comment->user_id = auth()->id(); // Gán ID người dùng hiện tại  
+            $comment->product_id = $request->product_id;
+            $comment->content = $request->content;
+            $comment->time = now();
+            $comment->status = 1;
+            $comment->save();
+        }
+
+        return response()->json(['content' => $comment->content], 201);
+    }
 }

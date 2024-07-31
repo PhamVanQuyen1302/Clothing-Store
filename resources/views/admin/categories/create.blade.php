@@ -29,24 +29,36 @@
         <div class="col-10">
             <h2 class="text-center">{{ $title }}</h2>
             <div class="row">
-                <form action="{{ route('admin.categories.store') }}" enctype="multipart/form-data" method="POST" class="row g-3">
+                <form action="{{ route('admin.categories.store') }}" enctype="multipart/form-data" method="POST"
+                    class="row g-3">
                     @csrf
                     <div class="col-md-12">
                         <label for="fullnameInput" class="form-label">Tên danh mục</label>
-                        <input type="text" class="form-control" id="fullnameInput" name="name"
+                        <input type="text" class="form-control" value="{{ old('name') }}" id="fullnameInput" name="name"
                             placeholder="Enter your name">
                     </div>
+                    @error('name')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="col-md-12">
                         <label for="fullnameInput" class="form-label">Ảnh danh mục</label>
-                        <input type="file" class="form-control" id="file_input"  name="image"
+                        <input type="file" class="form-control" id="file_input" name="image"
                             placeholder="Enter your name">
                     </div>
                     <img src="" id="img_category" alt="ảnh danh mục" style="display:none; width: 150px;">
                     <div class="col-md-12">
                         <label for="fullnameInput" class="form-label">Mô tả danh mục</label>
-                        <input type="text" class="form-control" id="fullnameInput" name="description"
+                        <input type="text" class="form-control" value="{{ old('description') }}" id="fullnameInput" name="description"
                             placeholder="Enter your name">
                     </div>
+                    @error('description')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+
                     <div class="col-12">
                         <div class="text-center">
                             <button type="submit" class="btn btn-success">Thêm danh mục</button>

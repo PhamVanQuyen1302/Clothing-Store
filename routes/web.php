@@ -4,6 +4,8 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\OrderContrller;
+use App\Http\Controllers\admin\OrderStatusController;
+use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
@@ -37,9 +39,12 @@ Route::get('/filter_data', [AjaxController::class, 'filterData'])->name('filter_
 Route::match(['get', 'post'], 'add/cart', [AjaxController::class, 'addCart'])->name('cart.add');
 Route::match(['get', 'post'], 'dele/cart', [AjaxController::class, 'deleteCart'])->name('cart.dele');
 Route::get('cart', [AjaxController::class, 'addToCart'])->name('cart.list');
+Route::post('comments', [AjaxController::class, 'comment'])->name('comments.store');
 Route::get('check-out', [OderController::class, 'save'])->name('cart.save');
 Route::get('check-out/success', [OderController::class, 'success'])->name('checkout.success');
 Route::post('/checkout', [OderController::class, 'processCheckout'])->name('checkout.process');
+Route::get('{id}/your-order', [HomeController::class, 'yourOrder'])->name('home.yourOrder');
+Route::get('{id}/cancel-order', [HomeController::class, 'cancel'])->name('home.cancel');
 
 Route::group(['prefix' => 'auth'], function () {
     Route::match(['get', 'post'], 'login', [AuthClienController::class, 'login'])->name('auth.login')->middleware('guest');
@@ -119,5 +124,26 @@ Route::prefix('admin')
                 Route::get('/',                 [OrderContrller::class, 'index'])->name('index');
                 Route::get('{id}/show',         [OrderContrller::class, 'show'])->name('show');
                 Route::post('update',         [OrderContrller::class, 'update'])->name('update');
+            });
+
+        Route::prefix('order-status')
+            ->as('order-status.')
+            ->group(function () {
+                Route::get('/',                 [OrderStatusController::class, 'index'])->name('index');
+                Route::get('create',            [OrderStatusController::class, 'create'])->name('create');
+                Route::post('store',            [OrderStatusController::class, 'store'])->name('store');
+                Route::get('{id}/edit',         [OrderStatusController::class, 'edit'])->name('edit');
+                Route::put('{id}/update',       [OrderStatusController::class, 'update'])->name('update');
+                Route::get('{id}/destroy',   [OrderStatusController::class, 'destroy'])->name('destroy');
+            });
+        Route::prefix('payments')
+            ->as('payments.')
+            ->group(function () {
+                Route::get('/',                 [PaymentController::class, 'index'])->name('index');
+                Route::get('create',            [PaymentController::class, 'create'])->name('create');
+                Route::post('store',            [PaymentController::class, 'store'])->name('store');
+                Route::get('{id}/edit',         [PaymentController::class, 'edit'])->name('edit');
+                Route::put('{id}/update',       [PaymentController::class, 'update'])->name('update');
+                Route::get('{id}/destroy',   [PaymentController::class, 'destroy'])->name('destroy');
             });
     });

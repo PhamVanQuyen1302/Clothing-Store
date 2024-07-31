@@ -29,27 +29,39 @@
         <div class="col-10">
             <h2 class="text-center">{{ $title }}</h2>
             <div class="row">
-                <form action="{{ route('admin.users.update',$model->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.users.update', $model->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Họ và tên:</label>
                         <input type="text" class="form-control" id="employeeName" name="name"
-                            value="{{ $model->name }}"    
-                            placeholder="Enter emploree name">
+                            value="{{ $model->name }}" placeholder="Enter emploree name">
                     </div>
+                    @error('name')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Email:</label>
                         <input type="email" class="form-control" disabled id="employeeName" name="email"
-                            value="{{ $model->email }}"    
-                            placeholder="Enter emploree name">
+                            value="{{ $model->email }}" placeholder="Enter emploree name">
                     </div>
+                    @error('email')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Số điện thoại</label>
                         <input type="number" class="form-control" id="employeeName" name="tel"
-                            value="{{ $model->tel }}"    
-                            placeholder="Enter emploree name">
+                            value="{{ $model->tel }}" placeholder="Enter emploree name">
                     </div>
+                    @error('tel')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Giới tính</label>
                         <select class="form-select mb-3" name="gender" aria-label="Default select example">
@@ -57,36 +69,60 @@
                             <option value="0" {{ $model->gender == 0 ? 'selected' : '' }}>Nữ</option>
                         </select>
                     </div>
+                    @error('gender')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Ngày thánh năm sinh</label>
                         <input type="date" class="form-control" id="employeeName" name="age"
-                            value="{{ $model->age }}"    
-                            placeholder="Enter emploree name">
+                            value="{{ $model->age }}" placeholder="Enter emploree name">
                     </div>
+                    @error('age')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Mật khẩu:</label>
                         <input type="text" class="form-control" id="employeeName" name="password"
-                            value="{{ $model->password }}"    
-                            placeholder="Enter emploree name">
+                            value="{{ $model->password }}" placeholder="Enter emploree name">
                     </div>
+                    @error('password')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Ảnh đại diện</label>
-                        <input type="file"   class="form-control" name="avatar">
+                        <input type="file" class="form-control" name="avatar">
                         <img src="{{ Storage::url($model->avatar) }}" class="mt-3 mb-3" width="100px" alt="">
                     </div>
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Địa chỉ</label>
-                        <input type="text" class="form-control" value="{{ $model->address }}" id="employeeName" name="adđress"
-                            placeholder="Enter emploree name">
+                        <input type="text" class="form-control" value="{{ $model->address }}" id="employeeName"
+                            name="adđress" placeholder="Enter emploree name">
                     </div>
+                    @error('adđress')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Chức Vụ</label>
-                        <select class="form-select mb-3" name="role_id" aria-label="Default select example">    
-                            @foreach ($roles as $id => $name)  
-                                <option value="{{ $id }}" {{ $id == $model->role->id ? 'selected' : '' }}>{{ $name }}</option>  
-                            @endforeach  
+                        <select class="form-select mb-3" name="role_id" aria-label="Default select example">
+                            @foreach ($roles as $id => $name)
+                                <option value="{{ $id }}" {{ $id == $model->role->id ? 'selected' : '' }}>
+                                    {{ $name }}</option>
+                            @endforeach
                         </select>
                     </div>
+                    @error('role_id')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="mb-3">
                         <label for="employeeName" class="form-label">Trang thái</label>
                         <select class="form-select mb-3" name="status" aria-label="Default select example">
@@ -94,6 +130,11 @@
                             <option value="0" {{ $model->status == 0 ? 'selected' : '' }}>bị khóa</option>
                         </select>
                     </div>
+                    @error('status')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
 
                     <div class="text-center mt-3 mb-3">
                         <button type="submit" class="btn btn-primary">{{ $title }}</button>

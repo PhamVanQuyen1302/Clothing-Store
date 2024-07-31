@@ -238,30 +238,44 @@
                                     <div class="section__content">
                                         <div class="billing">
                                             <div class="form-group">
-                                                <input type="text" name="name" required
-                                                    value="{{ $user['name'] }}" class="field__input form-control"
-                                                    placeholder="Họ và tên">
+                                                <input type="text" name="customerName" required
+                                                    value="{{ old('customerName', $user['name']) }}"
+                                                    class="field__input form-control" placeholder="Họ và tên">
+                                                @error('customerName')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" name="email" required
-                                                    value="{{ $user['email'] }}" class="field__input form-control"
-                                                    placeholder="Email">
+                                                <input type="email" name="customerEmail" required
+                                                    value="{{ old('customerEmail', $user['email']) }}"
+                                                    class="field__input form-control" placeholder="Email">
+                                                @error('customerEmail')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" name="tel" required
-                                                    value="{{ $user['tel'] }}" class="field__input form-control"
-                                                    placeholder="Điện thoại">
+                                                <input type="text" name="customerMobile" required
+                                                    value="{{ old('customerMobile', $user['tel']) }}"
+                                                    class="field__input form-control" placeholder="Điện thoại">
+                                                @error('customerMobile')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" name="address" required
-                                                    value="{{ $user['address'] }}" class="field__input form-control"
-                                                    placeholder="Địa chỉ">
+                                                <input type="text" name="customerAddress" required
+                                                    value="{{ old('customerAddress', $user['address']) }}"
+                                                    class="field__input form-control" placeholder="Địa chỉ">
+                                                @error('customerAddress')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group">
-                                                <textarea name="note" class="field__input form-control m0" placeholder="Ghi chú"></textarea>
+                                                <textarea name="description" class="field__input form-control m0" placeholder="Ghi chú">{{ old('description') }}</textarea>
+                                                @error('description')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -278,11 +292,15 @@
                                             <div class="slelect">
                                                 <label>
                                                     <input type="checkbox" value="{{ $payment->id }}"
-                                                        name="payment_id">
+                                                        name="paymentMethod[]"
+                                                        {{ in_array($payment->id, old('paymentMethod', [])) ? 'checked' : '' }}>
                                                     {{ $payment->name }}
                                                 </label>
                                             </div>
                                         @endforeach
+                                        @error('paymentMethod')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

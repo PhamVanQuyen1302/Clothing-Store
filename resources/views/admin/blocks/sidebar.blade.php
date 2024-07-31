@@ -88,6 +88,15 @@
                         Danh sách đơn hàng </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.order-status.index') }}" class="nav-link" data-key="t-analytics">
+                        Danh sách trạng thái đơn hàng </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.payments.index') }}" class="nav-link" data-key="t-analytics">
+                        Danh sách phương thức thanh toán </a>
+                </li>
+                <li class="nav-item">
                     <a href="/" class="nav-link" data-key="t-analytics">
                         Quay về trang User </a>
                 </li>

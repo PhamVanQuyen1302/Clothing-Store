@@ -31,15 +31,15 @@ class OderController extends Controller
     public function processCheckout(Request $request)
     {
         // Xác thực dữ liệu (bỏ chú thích nếu cần)  
-        // $request->validate([  
-        //     'customerName' => 'required|string|max:255',  
-        //     'customerEmail' => 'required|email|max:255',  
-        //     'customerMobile' => 'required|string|max:15',  
-        //     'customerAddress' => 'required|string|max:255',  
-        //     'paymentMethod' => 'required|array',  
-        //     'paymentMethod.*' => 'integer',  
-        //     'description' => 'nullable|string|max:500',  
-        // ]);  
+        $request->validate([  
+            'customerName' => 'required|string|max:255',  
+            'customerEmail' => 'required|email|max:255',  
+            'customerMobile' => 'required|string|max:15',  
+            'customerAddress' => 'required|string|max:255',  
+            'paymentMethod' => 'required|array',  
+            'paymentMethod.*' => 'integer',  
+            'description' => 'nullable|string|max:500',  
+        ]);  
 
         // Tạo đơn hàng mới  
         $order = new Order();

@@ -42,34 +42,40 @@
                                     </div>
                                 @endif
                                 <div class="row">
-                                    <form class="profile" method="post" action="{{ route('home.update',$model->id) }}" enctype="multipart/form-data">
+                                    <form class="profile" method="post" action="{{ route('home.update', $model->id) }}"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="id" value="">
                                         <div class="pf col-lg-6 col-md-6 col-sm-12 col-xs-12 itemsPr">
                                             <span>Họ tên</span>
-                                            <span><b><input type="text" name="name" value="{{ $model->name }}"></b></span>
+                                            <span><b><input type="text" name="name"
+                                                        value="{{ $model->name }}"></b></span>
                                         </div>
                                         <div class="pf col-lg-6 col-md-6 col-sm-12 col-xs-12 itemsPr">
                                             <span>email</span>
-                                            <span><b><input type="text" disabled name="email" value="{{ $model->email }}"></b></span>
+                                            <span><b><input type="text" disabled name="email"
+                                                        value="{{ $model->email }}"></b></span>
                                         </div>
                                         <div class="pf col-lg-6 col-md-6 col-sm-12 col-xs-12 itemsPr">
                                             <span>Số điêm thoại</span>
-                                            <span><b><input type="text" name="tel" value="{{ $model->tel }}"></b></span>
+                                            <span><b><input type="text" name="tel"
+                                                        value="{{ $model->tel }}"></b></span>
                                         </div>
                                         <div class="pf col-lg-6 col-md-6 col-sm-12 col-xs-12 itemsPr">
                                             <span>Địa chỉ</span>
-                                            <span><b><input type="text" name="address" value="{{ $model->address }}"></b></span>
+                                            <span><b><input type="text" name="address"
+                                                        value="{{ $model->address }}"></b></span>
                                         </div>
                                         <div class="pf col-lg-6 col-md-6 col-sm-12 col-xs-12 itemsPr">
                                             <span>Avatar</span>
                                             <span><b><input type="file" name="avatar" value=""></b></span>
-                                            <img src="{{ Storage::url($model->avatar )}}" width="50" height="50">
+                                            <img src="{{ Storage::url($model->avatar) }}" width="50" height="50">
                                         </div>
-                
+                                        
                                         <div class="pf col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <button type="submit" class="btnGreen">Cập nhật thông tin cá nhân</button>
+                                            <a href="{{ route('home.yourOrder', $model->id) }}" class="btn btn-danger ">Đơn hàng của bạn</a>
                                         </div>
                                     </form>
                                 </div>
@@ -80,7 +86,7 @@
                 </div>
             </div>
         </div>
-        
+
         <meta name="google-site-verification" content="ueN8a6L-rHAbBgu2lamINIYDu73uSC2eUs8YTWdlYGo" />
         <Style>
             .bannercategory .box-sport-content img {
