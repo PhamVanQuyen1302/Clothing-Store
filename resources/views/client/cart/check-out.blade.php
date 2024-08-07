@@ -238,34 +238,34 @@
                                     <div class="section__content">
                                         <div class="billing">
                                             <div class="form-group">
-                                                <input type="text" name="customerName" required
+                                                <input type="text" name="name" required
                                                     value="{{ old('customerName', $user['name']) }}"
                                                     class="field__input form-control" placeholder="Họ và tên">
-                                                @error('customerName')
+                                                @error('name')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" name="customerEmail" required
+                                                <input type="email" name="email" required
                                                     value="{{ old('customerEmail', $user['email']) }}"
                                                     class="field__input form-control" placeholder="Email">
-                                                @error('customerEmail')
+                                                @error('email')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" name="customerMobile" required
+                                                <input type="text" name="tel" required
                                                     value="{{ old('customerMobile', $user['tel']) }}"
                                                     class="field__input form-control" placeholder="Điện thoại">
-                                                @error('customerMobile')
+                                                @error('tel')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" name="customerAddress" required
+                                                <input type="text" name="address" required
                                                     value="{{ old('customerAddress', $user['address']) }}"
                                                     class="field__input form-control" placeholder="Địa chỉ">
-                                                @error('customerAddress')
+                                                @error('address')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -289,19 +289,21 @@
                                     </div>
                                     <div class="section__content">
                                         @foreach ($payments as $payment)
-                                            <div class="slelect">
+                                            <div class="select">
                                                 <label>
                                                     <input type="checkbox" value="{{ $payment->id }}"
-                                                        name="paymentMethod[]"
-                                                        {{ in_array($payment->id, old('paymentMethod', [])) ? 'checked' : '' }}>
+                                                        name="payment_id[]"
+                                                        {{ in_array($payment->id, old('payment_id', [])) ? 'checked' : '' }}>
                                                     {{ $payment->name }}
                                                 </label>
                                             </div>
                                         @endforeach
-                                        @error('paymentMethod')
+                                        @error('payment_id')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    
+
                                 </div>
                             </div>
                         </div>

@@ -294,11 +294,13 @@
                 });
             }
 
-            $('#dele-cart').click(function() {
-                var id = $('#dele-cart').data('id');
-                deleCart(id);
+            
+             
 
-            });
+            $(document).on('click', '#dele-cart', function() {  
+                var id = $(this).data('id');  
+                deleCart(id);  
+            });  
         })
     </script>
 

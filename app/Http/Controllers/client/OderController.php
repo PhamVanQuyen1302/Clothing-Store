@@ -31,15 +31,15 @@ class OderController extends Controller
     public function processCheckout(Request $request)
     {
         // Xác thực dữ liệu (bỏ chú thích nếu cần)  
-        $request->validate([  
-            'customerName' => 'required|string|max:255',  
-            'customerEmail' => 'required|email|max:255',  
-            'customerMobile' => 'required|string|max:15',  
-            'customerAddress' => 'required|string|max:255',  
-            'paymentMethod' => 'required|array',  
-            'paymentMethod.*' => 'integer',  
-            'description' => 'nullable|string|max:500',  
-        ]);  
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'tel' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'payment_id' => 'required|array',
+            'payment_id.*' => 'integer',
+            'description' => 'nullable|string|max:500',
+        ]);
 
         // Tạo đơn hàng mới  
         $order = new Order();
@@ -52,7 +52,10 @@ class OderController extends Controller
         $order->booking_date = now();
         $order->totak = 0; // Sẽ cập nhật sau khi tính tổng  
         $order->note = $request->input('note');
-        $order->payment_id = $request->input('payment_id'); // Lưu phương thức thanh toán  
+        $paymentIds = $request->input('payment_id');
+        if (!empty($paymentIds)) {
+            $order->payment_id = (int)$paymentIds[0]; // Lưu phương thức thanh toán đầu tiên  
+        }
         $order->order_status_id = 1; // Giả định 1 là trạng thái "Đang xử lý"  
 
         // Lưu đơn hàng  
@@ -84,7 +87,7 @@ class OderController extends Controller
 
         // Cập nhật lại tổng tiền cho đơn hàng  
         $order->totak = $totalAmount;
-        // dd( $order->totak);
+        // dd($order->totak);
         $order->save();
 
         // Xử lý xóa sản phẩm khỏi giỏ hàng  
@@ -119,15 +122,16 @@ class OderController extends Controller
                     $cartModel->delete();
                 }
             }
-           
         }
 
         // Chuyển hướng đến trang thành công với thông báo  
         return redirect()->route('checkout.success')->with('success', 'Đặt hàng thành công!');
     }
 
+
     public function success()
     {
+        // $data = Order::query()->get();
         return view('client.cart.check-out-success');
     }
 }

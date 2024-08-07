@@ -276,11 +276,7 @@
                                     </p>
                                 </div>
                             </div>
-                            {{-- <div style="margin-top: 10px;">
-                                <div class="fb-comments tp_product_detail_comment"
-                                    data-href="http://t0320.store.nhanh.vn/giay-nike-air-force-1-shadow-se-womens-solar-red-db3902100-p37834087.html"
-                                    data-width="100%" data-numposts="5"></div>
-                            </div> --}}
+
                             <div id="tab2" class="contentTab showSocial">
 
                                 @php
@@ -720,8 +716,8 @@
                     var commentContent = $('#comment').val().trim();
                     var productId = $('#product-info').data('product-id');
                     // Kiểm tra độ dài của bình luận  
-                    if (commentContent.length < 30) {
-                        alert('Nội dung đánh giá tối thiểu 30 ký tự.');
+                    if (commentContent.length < 10) {
+                        alert('Nội dung đánh giá tối thiểu 10 ký tự.');
                         return;
                     }
 
@@ -735,10 +731,13 @@
                             // Thêm các thông tin khác nếu cần thiết, như user_id, token CSRF,...  
                         },
                         success: function(response) {
-                            // Xử lý thành công, ví dụ hiển thị bình luận vừa gửi  
+                            // Thông báo thành công  
+                            alert("Bình luận thành công!"); // Hiển thị thông báo  
+
                             $('#comment').val(''); // Làm trống ô nhập  
-                            // $('.content-text').prepend('<p>' + response.content +
-                            //     '</p>'); // Thêm bình luận mới vào danh sách bình luận  
+
+                            // Tự động load lại trang  
+                            location.reload(); // Reload lại trang hiện tại  
                         },
                         error: function(xhr) {
                             // Xử lý lỗi  
